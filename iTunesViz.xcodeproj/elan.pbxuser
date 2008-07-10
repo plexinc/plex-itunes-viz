@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = E36677B20E2146DC000AA775 /* iTunesViz */;
+		activeTarget = 8D1107260486CEB800E47090 /* iTunesViz */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* iTunesViz */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = E36677CC0E2146F1000AA775 /* Code sense */;
+		executables = (
+			E36677B20E2146DC000AA775 /* iTunesViz */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					681,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 237407204;
+			PBXWorkspaceStateSaveDate = 237407204;
+		};
+		perUserProjectItems = {
+			E300F2FA0E268E8000DDCDFE /* PBXTextBookmark */ = E300F2FA0E268E8000DDCDFE /* PBXTextBookmark */;
+			E300F2FC0E268E8000DDCDFE /* PBXTextBookmark */ = E300F2FC0E268E8000DDCDFE /* PBXTextBookmark */;
+			E300F2FD0E268E8000DDCDFE /* PBXTextBookmark */ = E300F2FD0E268E8000DDCDFE /* PBXTextBookmark */;
+			E300F2FE0E268E8000DDCDFE /* PBXTextBookmark */ = E300F2FE0E268E8000DDCDFE /* PBXTextBookmark */;
+			E300F2FF0E268E8000DDCDFE /* PBXTextBookmark */ = E300F2FF0E268E8000DDCDFE /* PBXTextBookmark */;
+			E300F31E0E26965000DDCDFE /* PBXTextBookmark */ = E300F31E0E26965000DDCDFE /* PBXTextBookmark */;
+			E300F31F0E26965000DDCDFE /* PBXTextBookmark */ = E300F31F0E26965000DDCDFE /* PBXTextBookmark */;
+			E300F3200E26965000DDCDFE /* PBXTextBookmark */ = E300F3200E26965000DDCDFE /* PBXTextBookmark */;
+			E300F3210E26965000DDCDFE /* PBXTextBookmark */ = E300F3210E26965000DDCDFE /* PBXTextBookmark */;
+			E300F3230E26965000DDCDFE /* PBXTextBookmark */ = E300F3230E26965000DDCDFE /* PBXTextBookmark */;
+			E300F3240E26965000DDCDFE /* PBXTextBookmark */ = E300F3240E26965000DDCDFE /* PBXTextBookmark */;
+			E300F4140E26BC8700DDCDFE /* PBXTextBookmark */ = E300F4140E26BC8700DDCDFE /* PBXTextBookmark */;
+			E300F4150E26BC8700DDCDFE /* PBXTextBookmark */ = E300F4150E26BC8700DDCDFE /* PBXTextBookmark */;
+			E30F04A20E25CE700085E272 /* PBXTextBookmark */ = E30F04A20E25CE700085E272 /* PBXTextBookmark */;
+			E30F05940E2604B10085E272 /* PBXTextBookmark */ = E30F05940E2604B10085E272 /* PBXTextBookmark */;
+			E30F05950E2604B10085E272 /* PBXTextBookmark */ = E30F05950E2604B10085E272 /* PBXTextBookmark */;
+			E30F05A20E2604B10085E272 /* PBXTextBookmark */ = E30F05A20E2604B10085E272 /* PBXTextBookmark */;
+			E30F05A30E2604B10085E272 /* PBXTextBookmark */ = E30F05A30E2604B10085E272 /* PBXTextBookmark */;
+			E347C75E0E21924C002F3DCA /* PBXTextBookmark */ = E347C75E0E21924C002F3DCA /* PBXTextBookmark */;
+			E347C7600E21924C002F3DCA /* PBXTextBookmark */ = E347C7600E21924C002F3DCA /* PBXTextBookmark */;
+			E347C7710E2193A4002F3DCA /* PBXTextBookmark */ = E347C7710E2193A4002F3DCA /* PBXTextBookmark */;
+			E36678190E21563C000AA775 /* PBXTextBookmark */ = E36678190E21563C000AA775 /* PBXTextBookmark */;
+			E366781E0E21563C000AA775 /* PBXTextBookmark */ = E366781E0E21563C000AA775 /* PBXTextBookmark */;
+			E366781F0E21563C000AA775 /* PBXTextBookmark */ = E366781F0E21563C000AA775 /* PBXTextBookmark */;
+			E36678200E21563C000AA775 /* PBXTextBookmark */ = E36678200E21563C000AA775 /* PBXTextBookmark */;
+			E36678250E21563C000AA775 /* PBXTextBookmark */ = E36678250E21563C000AA775 /* PBXTextBookmark */;
+			E36678290E21563C000AA775 /* PBXTextBookmark */ = E36678290E21563C000AA775 /* PBXTextBookmark */;
+			E36678380E21563C000AA775 /* PBXTextBookmark */ = E36678380E21563C000AA775 /* PBXTextBookmark */;
+		};
+		sourceControlManager = E36677CB0E2146F1000AA775 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1249, 705}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 260}";
+			sepNavWindowFrame = "{{61, 202}, {1406, 929}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* iTunesViz */ = {
+		activeExec = 0;
+		executables = (
+			E36677B20E2146DC000AA775 /* iTunesViz */,
+		);
+	};
+	E300F2FA0E268E8000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678050E21517F000AA775 /* iTunesVisualAPI.h */;
+		name = "iTunesVisualAPI.h: 236";
+		rLen = 27;
+		rLoc = 8043;
+		rType = 0;
+		vrLen = 2352;
+		vrLoc = 6577;
+	};
+	E300F2FC0E268E8000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678040E21517F000AA775 /* iTunesAPI.h */;
+		name = "iTunesAPI.h: 305";
+		rLen = 0;
+		rLoc = 9477;
+		rType = 0;
+		vrLen = 2009;
+		vrLoc = 8471;
+	};
+	E300F2FD0E268E8000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678050E21517F000AA775 /* iTunesVisualAPI.h */;
+		name = "iTunesVisualAPI.h: 236";
+		rLen = 27;
+		rLoc = 8043;
+		rType = 0;
+		vrLen = 2352;
+		vrLoc = 6577;
+	};
+	E300F2FE0E268E8000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678040E21517F000AA775 /* iTunesAPI.h */;
+		name = "iTunesAPI.h: 197";
+		rLen = 27;
+		rLoc = 5495;
+		rType = 0;
+		vrLen = 1257;
+		vrLoc = 4921;
+	};
+	E300F2FF0E268E8000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678050E21517F000AA775 /* iTunesVisualAPI.h */;
+		name = "iTunesVisualAPI.h: 236";
+		rLen = 27;
+		rLoc = 8043;
+		rType = 0;
+		vrLen = 2352;
+		vrLoc = 6577;
+	};
+	E300F3190E26931400DDCDFE /* init.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {859, 748}}";
+			sepNavSelRange = "{214, 0}";
+			sepNavVisRange = "{0, 214}";
+		};
+	};
+	E300F31E0E26965000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E300F3190E26931400DDCDFE /* init.h */;
+		name = "init.h: 15";
+		rLen = 0;
+		rLoc = 214;
+		rType = 0;
+		vrLen = 214;
+		vrLoc = 0;
+	};
+	E300F31F0E26965000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36677E10E214843000AA775 /* AppController.m */;
+		name = "AppController.m: 220";
+		rLen = 0;
+		rLoc = 7618;
+		rType = 0;
+		vrLen = 2095;
+		vrLoc = 6407;
+	};
+	E300F3200E26965000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36677E10E214843000AA775 /* AppController.m */;
+		name = "AppController.m: 220";
+		rLen = 0;
+		rLoc = 7618;
+		rType = 0;
+		vrLen = 2098;
+		vrLoc = 6404;
+	};
+	E300F3210E26965000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E300F3190E26931400DDCDFE /* init.h */;
+		name = "init.h: 15";
+		rLen = 0;
+		rLoc = 214;
+		rType = 0;
+		vrLen = 214;
+		vrLoc = 0;
+	};
+	E300F3230E26965000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678040E21517F000AA775 /* iTunesAPI.h */;
+		name = "iTunesAPI.h: 164";
+		rLen = 0;
+		rLoc = 4934;
+		rType = 0;
+		vrLen = 1257;
+		vrLoc = 4921;
+	};
+	E300F3240E26965000DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678040E21517F000AA775 /* iTunesAPI.h */;
+		name = "iTunesAPI.h: 164";
+		rLen = 0;
+		rLoc = 4934;
+		rType = 0;
+		vrLen = 1257;
+		vrLoc = 4921;
+	};
+	E300F4140E26BC8700DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36677E10E214843000AA775 /* AppController.m */;
+		name = "AppController.m: 137";
+		rLen = 0;
+		rLoc = 4128;
+		rType = 0;
+		vrLen = 2141;
+		vrLoc = 3399;
+	};
+	E300F4150E26BC8700DDCDFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678050E21517F000AA775 /* iTunesVisualAPI.h */;
+		name = "iTunesVisualAPI.h: 225";
+		rLen = 0;
+		rLoc = 7657;
+		rType = 0;
+		vrLen = 2352;
+		vrLoc = 6577;
+	};
+	E30F04A20E25CE700085E272 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678030E21517F000AA775 /* iTunesAPI.c */;
+		name = "iTunesAPI.c: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 3204;
+		vrLoc = 0;
+	};
+	E30F05940E2604B10085E272 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678050E21517F000AA775 /* iTunesVisualAPI.h */;
+		name = "iTunesVisualAPI.h: 234";
+		rLen = 11;
+		rLoc = 7941;
+		rType = 0;
+		vrLen = 1896;
+		vrLoc = 7034;
+	};
+	E30F05950E2604B10085E272 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678040E21517F000AA775 /* iTunesAPI.h */;
+		name = "iTunesAPI.h: 318";
+		rLen = 0;
+		rLoc = 9740;
+		rType = 0;
+		vrLen = 1503;
+		vrLoc = 8866;
+	};
+	E30F05A20E2604B10085E272 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678040E21517F000AA775 /* iTunesAPI.h */;
+		name = "iTunesAPI.h: 244";
+		rLen = 7;
+		rLoc = 6674;
+		rType = 0;
+		vrLen = 1604;
+		vrLoc = 5237;
+	};
+	E30F05A30E2604B10085E272 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678050E21517F000AA775 /* iTunesVisualAPI.h */;
+		name = "iTunesVisualAPI.h: 134";
+		rLen = 27;
+		rLoc = 4536;
+		rType = 0;
+		vrLen = 2079;
+		vrLoc = 4420;
+	};
+	E347C7440E219152002F3DCA /* CocoaUtils.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = CocoaUtils.m;
+		path = "/Volumes/Whopper/Users/elan/Code/C++/Eclipse/XBMC-Fork/xbmc/osx/CocoaUtils.m";
+		sourceTree = "<absolute>";
+	};
+	E347C75E0E21924C002F3DCA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E347C7440E219152002F3DCA /* CocoaUtils.m */;
+		name = "CocoaUtils.m: 505";
+		rLen = 34;
+		rLoc = 15254;
+		rType = 0;
+		vrLen = 1927;
+		vrLoc = 14516;
+	};
+	E347C7600E21924C002F3DCA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E347C7440E219152002F3DCA /* CocoaUtils.m */;
+		name = "CocoaUtils.m: 505";
+		rLen = 34;
+		rLoc = 15254;
+		rType = 0;
+		vrLen = 1927;
+		vrLoc = 14516;
+	};
+	E347C7710E2193A4002F3DCA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36677E00E214843000AA775 /* AppController.h */;
+		name = "AppController.h: 14";
+		rLen = 0;
+		rLoc = 269;
+		rType = 0;
+		vrLen = 309;
+		vrLoc = 0;
+	};
+	E36677B20E2146DC000AA775 /* iTunesViz */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = iTunesViz;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			"creator-OSType-ITAppProc" = 5;
+			"message-OSType-ITAppProc" = 5;
+			"message-OSType-VisualPluginHandler" = 5;
+		};
+	};
+	E36677CB0E2146F1000AA775 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	E36677CC0E2146F1000AA775 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	E36677E00E214843000AA775 /* AppController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {801, 853}}";
+			sepNavSelRange = "{269, 0}";
+			sepNavVisRange = "{0, 309}";
+		};
+	};
+	E36677E10E214843000AA775 /* AppController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1111, 4718}}";
+			sepNavSelRange = "{4128, 0}";
+			sepNavVisRange = "{3399, 2141}";
+			sepNavWindowFrame = "{{84, 181}, {1406, 929}}";
+		};
+	};
+	E36678030E21517F000AA775 /* iTunesAPI.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {801, 5600}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 3204}";
+		};
+	};
+	E36678040E21517F000AA775 /* iTunesAPI.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {789, 10794}}";
+			sepNavSelRange = "{4934, 0}";
+			sepNavVisRange = "{4921, 1257}";
+			sepNavWindowFrame = "{{1100, 121}, {744, 1033}}";
+		};
+	};
+	E36678050E21517F000AA775 /* iTunesVisualAPI.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {985, 4760}}";
+			sepNavSelRange = "{7657, 0}";
+			sepNavVisRange = "{6577, 2352}";
+			sepNavWindowFrame = "{{1087, 137}, {744, 1033}}";
+		};
+	};
+	E36678190E21563C000AA775 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 260;
+		vrLoc = 0;
+	};
+	E366781E0E21563C000AA775 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 260;
+		vrLoc = 0;
+	};
+	E366781F0E21563C000AA775 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36677E00E214843000AA775 /* AppController.h */;
+		name = "AppController.h: 14";
+		rLen = 0;
+		rLoc = 291;
+		rType = 0;
+		vrLen = 251;
+		vrLoc = 0;
+	};
+	E36678200E21563C000AA775 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36677E10E214843000AA775 /* AppController.m */;
+		name = "AppController.m: 29";
+		rLen = 0;
+		rLoc = 11418;
+		rType = 0;
+		vrLen = 452;
+		vrLoc = 0;
+	};
+	E36678250E21563C000AA775 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678040E21517F000AA775 /* iTunesAPI.h */;
+		name = "iTunesAPI.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2646;
+		vrLoc = 20280;
+	};
+	E36678290E21563C000AA775 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678030E21517F000AA775 /* iTunesAPI.c */;
+		name = "iTunesAPI.c: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 3018;
+		vrLoc = 0;
+	};
+	E36678380E21563C000AA775 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E36678050E21517F000AA775 /* iTunesVisualAPI.h */;
+		name = "iTunesVisualAPI.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2981;
+		vrLoc = 0;
+	};
+}
