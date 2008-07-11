@@ -100,6 +100,37 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       break;
     }
     
+    case kPlayerGetCurrentTrackCoverArtMessage:
+    {
+      NSLog(@"kPlayerGetCurrentTrackCoverArtMessage");
+      PlayerGetCurrentTrackCoverArtMessage* msg = &messageInfo->u.getCurrentTrackCoverArtMessage;
+      
+      // Load file.
+      NSString *path = @"/Volumes/Drobo/New Music/Air - Pocket Symphony (2007)/folder.jpg";
+      NSData* imageData = [[NSData alloc] initWithContentsOfFile:path];
+      if (imageData != nil)
+      {
+        // Copy over contents to handle.
+        Handle handle;
+        PtrToHand([imageData bytes], &handle, [imageData length]);
+
+        // Fill in the message.
+        msg->coverArt = handle;
+        
+        NSString* type = NSHFSTypeOfFile(path);
+        msg->coverArtFormat = NSHFSTypeCodeFromFileType(type);
+
+        NSLog(@"Cover Art: %p, Cover Art Format: %s", msg->coverArt, msg->coverArtFormat);
+        
+        [type release];
+        [imageData release];
+      }
+      
+      [path release];
+      
+      break;
+    }
+    
     default:
     {
       NSLog(@"Called me for message %.4s", &message);
@@ -134,7 +165,7 @@ void toPascal(char* str, Str255 strPascal)
   
   //int arrayCount = CFArrayGetCount(bundleArray);
   //for (int i=0; i<arrayCount; i++)
-  int i = 1;
+  int i = 2;
   {
     bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
     NSLog(@"---------------------------------------------");

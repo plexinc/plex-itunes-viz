@@ -204,7 +204,7 @@
 				<key>PBXProjectModuleGUID</key>
 				<string>E30F049F0E25CDE40085E272</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>iTunesVisualAPI.h</string>
+				<string>MacTypes.h</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
@@ -212,25 +212,23 @@
 						<key>PBXProjectModuleGUID</key>
 						<string>E30F04A90E25CE700085E272</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>iTunesVisualAPI.h</string>
+						<string>MacTypes.h</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E300F4150E26BC8700DDCDFE</string>
+						<string>E35FFA1C0E273791005072E8</string>
 						<key>history</key>
 						<array>
-							<string>E300F3230E26965000DDCDFE</string>
-							<string>E300F2FA0E268E8000DDCDFE</string>
+							<string>E35FF9C00E272C7E005072E8</string>
+							<string>E35FF9F10E273525005072E8</string>
+							<string>E35FF9F20E273525005072E8</string>
 						</array>
 						<key>prevStack</key>
 						<array>
 							<string>E30F05A20E2604B10085E272</string>
 							<string>E30F05A30E2604B10085E272</string>
-							<string>E300F2FC0E268E8000DDCDFE</string>
-							<string>E300F2FD0E268E8000DDCDFE</string>
-							<string>E300F2FE0E268E8000DDCDFE</string>
-							<string>E300F2FF0E268E8000DDCDFE</string>
-							<string>E300F3240E26965000DDCDFE</string>
+							<string>E35FF9C10E272C7E005072E8</string>
+							<string>E35FF9F40E273525005072E8</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -355,7 +353,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>299 265 1128 905 0 0 1920 1178 </string>
+						<string>235 262 1128 905 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -385,7 +383,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E300F4140E26BC8700DDCDFE</string>
+										<string>E35FFA1B0E273791005072E8</string>
 										<key>history</key>
 										<array>
 											<string>E36678190E21563C000AA775</string>
@@ -395,7 +393,7 @@
 											<string>E30F05940E2604B10085E272</string>
 											<string>E30F05950E2604B10085E272</string>
 											<string>E300F31E0E26965000DDCDFE</string>
-											<string>E300F31F0E26965000DDCDFE</string>
+											<string>E300F4140E26BC8700DDCDFE</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -406,7 +404,6 @@
 											<string>E36678290E21563C000AA775</string>
 											<string>E36678380E21563C000AA775</string>
 											<string>E347C7600E21924C002F3DCA</string>
-											<string>E300F3200E26965000DDCDFE</string>
 											<string>E300F3210E26965000DDCDFE</string>
 										</array>
 									</dict>
@@ -421,7 +418,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {920, 780}}</string>
 								<key>RubberWindowFrame</key>
-								<string>299 265 1128 905 0 0 1920 1178 </string>
+								<string>235 262 1128 905 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -441,7 +438,7 @@
 								<key>Frame</key>
 								<string>{{0, 785}, {920, 79}}</string>
 								<key>RubberWindowFrame</key>
-								<string>299 265 1128 905 0 0 1920 1178 </string>
+								<string>235 262 1128 905 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -465,9 +462,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E300F2F40E268BF200DDCDFE</string>
+				<string>E35FF9BD0E26F9E8005072E8</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E300F2F50E268BF200DDCDFE</string>
+				<string>E35FF9BE0E26F9E8005072E8</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -605,10 +602,11 @@
 	<array>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E36677C20E2146F1000AA775</string>
-		<string>/Volumes/Whopper/Users/elan/Code/Cocoa/iTunesViz/iTunesViz/iTunesViz.xcodeproj</string>
+		<string>E30F049F0E25CDE40085E272</string>
+		<string>/Volumes/Whopper/Users/elan/Code/Cocoa/iTunesViz/iTunesViz.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>299 265 1128 905 0 0 1920 1178 </string>
+	<string>235 262 1128 905 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -685,7 +683,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E36677C20E2146F1000AA775</string>
-				<string>E300F2F70E268BF200DDCDFE</string>
+				<string>E35FF9C80E272CF9005072E8</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -805,13 +803,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E300F36A0E2698B000DDCDFE</string>
+				<string>E35FF9D20E272E02005072E8</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E300F36B0E2698B000DDCDFE</string>
-				<string>E300F36C0E2698B000DDCDFE</string>
-				<string>E300F36D0E2698B000DDCDFE</string>
-				<string>E300F36E0E2698B000DDCDFE</string>
-				<string>E300F36F0E2698B000DDCDFE</string>
+				<string>E35FF9D30E272E02005072E8</string>
+				<string>E35FF9D40E272E02005072E8</string>
+				<string>E35FF9D50E272E02005072E8</string>
+				<string>E35FF9D60E272E02005072E8</string>
+				<string>E35FF9D70E272E02005072E8</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
