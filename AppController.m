@@ -5,7 +5,7 @@
 //  Created by Elan Feingold on 7/6/2008.
 //  Copyright 2008 Blue Mandrill Design. All rights reserved.
 //
-
+#include <AGL/agl.h>
 #import "AppController.h"
 #include "iTunesAPI.h"
 #include "iTunesVisualAPI.h"
@@ -157,7 +157,7 @@ void toPascal(char* str, Str255 strPascal)
 
 - (IBAction)menuNew:(id)sender 
 { 
-  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
+  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
   CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
   
   // Read iTunes preferences.
@@ -165,7 +165,7 @@ void toPascal(char* str, Str255 strPascal)
   
   //int arrayCount = CFArrayGetCount(bundleArray);
   //for (int i=0; i<arrayCount; i++)
-  int i = 2;
+  int i = 1;
   {
     bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
     NSLog(@"---------------------------------------------");
@@ -225,11 +225,12 @@ void toPascal(char* str, Str255 strPascal)
     usleep(100000);
   
     // Send an idle message for good measure if the plug-in wants one.
+    VisualPluginIdleMessage idleMsg;
+    idleMsg.timeBetweenDataInMS = 20;
+
     if (options & kVisualWantsIdleMessages)
     {
       NSLog(@"Sending idle message.");
-      VisualPluginIdleMessage idleMsg;
-      idleMsg.timeBetweenDataInMS = 20;
       //handlerProc(kVisualPluginIdleMessage, (struct VisualPluginMessageInfo* )&idleMsg, handlerData);
       NSLog(@" -> Sent.");
       usleep(100000);
@@ -335,7 +336,9 @@ void toPascal(char* str, Str255 strPascal)
     WindowRef refWindow = [myWindow windowRef];
     showMsg.port = GetWindowPort(refWindow);
     NSLog(@"Telling to show window");
+    NSLog(@"Before: %p", aglGetCurrentContext());
     handlerProc(kVisualPluginShowWindowMessage, (struct VisualPluginMessageInfo* )&showMsg, handlerData);
+    NSLog(@"After: %p", aglGetCurrentContext());
     
     // Send some bogus render data.
     RenderVisualData visualData;
@@ -351,6 +354,7 @@ void toPascal(char* str, Str255 strPascal)
     renderMsg.currentPositionInMS = 0;
     renderMsg.timeStampID = 0;
     renderMsg.renderData = &visualData;
+    
     handlerProc(kVisualPluginRenderMessage, (struct VisualPluginMessageInfo* )&renderMsg, handlerData);
   }
   
