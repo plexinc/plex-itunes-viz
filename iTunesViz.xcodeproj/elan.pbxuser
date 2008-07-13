@@ -19,7 +19,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					857,
+					746,
 					20,
 					48,
 					43,
@@ -297,6 +297,63 @@
 			E3DB359E0E29696B004F1DE5 /* PBXTextBookmark */ = E3DB359E0E29696B004F1DE5 /* PBXTextBookmark */;
 			E3DB35A00E29699D004F1DE5 /* PBXTextBookmark */ = E3DB35A00E29699D004F1DE5 /* PBXTextBookmark */;
 			E3DB35A20E296A8A004F1DE5 /* PBXTextBookmark */ = E3DB35A20E296A8A004F1DE5 /* PBXTextBookmark */;
+			E3DB35A40E296B49004F1DE5 /* PBXTextBookmark */ = E3DB35A40E296B49004F1DE5 /* PBXTextBookmark */;
+			E3DB35A60E296BD0004F1DE5 /* PBXTextBookmark */ = E3DB35A60E296BD0004F1DE5 /* PBXTextBookmark */;
+			E3DB35A90E29726B004F1DE5 /* PBXTextBookmark */ = E3DB35A90E29726B004F1DE5 /* PBXTextBookmark */;
+			E3DB35AA0E29726B004F1DE5 /* PBXTextBookmark */ = E3DB35AA0E29726B004F1DE5 /* PBXTextBookmark */;
+			E3DB35AC0E29739A004F1DE5 /* PBXTextBookmark */ = E3DB35AC0E29739A004F1DE5 /* PBXTextBookmark */;
+			E3DB35AD0E29801B004F1DE5 /* PBXTextBookmark */ = E3DB35AD0E29801B004F1DE5 /* PBXTextBookmark */;
+			E3DB35B00E29846C004F1DE5 /* PBXTextBookmark */ = E3DB35B00E29846C004F1DE5 /* PBXTextBookmark */;
+			E3DB35B20E298538004F1DE5 /* PBXTextBookmark */ = E3DB35B20E298538004F1DE5 /* PBXTextBookmark */;
+			E3DB35B40E29858E004F1DE5 /* PBXTextBookmark */ = E3DB35B40E29858E004F1DE5 /* PBXTextBookmark */;
+			E3DB35B60E2985C6004F1DE5 /* PBXTextBookmark */ = E3DB35B60E2985C6004F1DE5 /* PBXTextBookmark */;
+			E3DB35B70E298620004F1DE5 /* PBXTextBookmark */ = E3DB35B70E298620004F1DE5 /* PBXTextBookmark */;
+			E3DB35B90E29866A004F1DE5 /* PBXTextBookmark */ = E3DB35B90E29866A004F1DE5 /* PBXTextBookmark */;
+			E3DB35BB0E29888E004F1DE5 /* PBXTextBookmark */ = E3DB35BB0E29888E004F1DE5 /* PBXTextBookmark */;
+			E3DB35BD0E29968E004F1DE5 /* PBXTextBookmark */ = E3DB35BD0E29968E004F1DE5 /* PBXTextBookmark */;
+			E3DB35BF0E2996BA004F1DE5 /* PBXTextBookmark */ = E3DB35BF0E2996BA004F1DE5 /* PBXTextBookmark */;
+			E3DB35C80E2997D3004F1DE5 /* PBXTextBookmark */ = E3DB35C80E2997D3004F1DE5 /* PBXTextBookmark */;
+			E3DB35CA0E299869004F1DE5 /* PBXTextBookmark */ = E3DB35CA0E299869004F1DE5 /* PBXTextBookmark */;
+			E3DB35CC0E2998C1004F1DE5 /* PBXTextBookmark */ = E3DB35CC0E2998C1004F1DE5 /* PBXTextBookmark */;
+			E3DB35CD0E2998FB004F1DE5 /* PBXTextBookmark */ = E3DB35CD0E2998FB004F1DE5 /* PBXTextBookmark */;
+			E3DB35CE0E299931004F1DE5 /* PBXTextBookmark */ = E3DB35CE0E299931004F1DE5 /* PBXTextBookmark */;
+			E3DB35D00E299983004F1DE5 /* PBXTextBookmark */ = E3DB35D00E299983004F1DE5 /* PBXTextBookmark */;
+			E3DB35D20E2999C5004F1DE5 /* PBXTextBookmark */ = E3DB35D20E2999C5004F1DE5 /* PBXTextBookmark */;
+			E3DB35D40E2999FC004F1DE5 /* PBXTextBookmark */ = E3DB35D40E2999FC004F1DE5 /* PBXTextBookmark */;
+			E3DB35D60E299A52004F1DE5 /* PBXTextBookmark */ = E3DB35D60E299A52004F1DE5 /* PBXTextBookmark */;
+			E3DB35D80E299A5A004F1DE5 /* PBXTextBookmark */ = E3DB35D80E299A5A004F1DE5 /* PBXTextBookmark */;
+			E3DB35DA0E299A63004F1DE5 /* PBXTextBookmark */ = E3DB35DA0E299A63004F1DE5 /* PBXTextBookmark */;
+			E3DB35DC0E299A8C004F1DE5 /* PBXTextBookmark */ = E3DB35DC0E299A8C004F1DE5 /* PBXTextBookmark */;
+			E3DB35DE0E299AB9004F1DE5 /* PBXTextBookmark */ = E3DB35DE0E299AB9004F1DE5 /* PBXTextBookmark */;
+			E3DB35E00E299AE5004F1DE5 /* PBXTextBookmark */ = E3DB35E00E299AE5004F1DE5 /* PBXTextBookmark */;
+			E3DB35E20E299AFD004F1DE5 /* PBXTextBookmark */ = E3DB35E20E299AFD004F1DE5 /* PBXTextBookmark */;
+			E3DB35E40E299B3A004F1DE5 /* PBXTextBookmark */ = E3DB35E40E299B3A004F1DE5 /* PBXTextBookmark */;
+			E3DB35E80E299BA7004F1DE5 /* PBXTextBookmark */ = E3DB35E80E299BA7004F1DE5 /* PBXTextBookmark */;
+			E3DB35EA0E299BAF004F1DE5 /* PBXTextBookmark */ = E3DB35EA0E299BAF004F1DE5 /* PBXTextBookmark */;
+			E3DB35EC0E299C18004F1DE5 /* PBXTextBookmark */ = E3DB35EC0E299C18004F1DE5 /* PBXTextBookmark */;
+			E3DB35EE0E299C3C004F1DE5 /* PBXTextBookmark */ = E3DB35EE0E299C3C004F1DE5 /* PBXTextBookmark */;
+			E3DB35EF0E299C85004F1DE5 /* PBXTextBookmark */ = E3DB35EF0E299C85004F1DE5 /* PBXTextBookmark */;
+			E3DB35F20E299C90004F1DE5 /* PBXTextBookmark */ = E3DB35F20E299C90004F1DE5 /* PBXTextBookmark */;
+			E3DB35F40E299CA7004F1DE5 /* PBXTextBookmark */ = E3DB35F40E299CA7004F1DE5 /* PBXTextBookmark */;
+			E3DB35F60E299CEB004F1DE5 /* PBXTextBookmark */ = E3DB35F60E299CEB004F1DE5 /* PBXTextBookmark */;
+			E3DB35F80E299D42004F1DE5 /* PBXTextBookmark */ = E3DB35F80E299D42004F1DE5 /* PBXTextBookmark */;
+			E3DB35FA0E299D5A004F1DE5 /* PBXTextBookmark */ = E3DB35FA0E299D5A004F1DE5 /* PBXTextBookmark */;
+			E3DB35FC0E299D7B004F1DE5 /* PBXTextBookmark */ = E3DB35FC0E299D7B004F1DE5 /* PBXTextBookmark */;
+			E3DB35FE0E299DC1004F1DE5 /* PBXTextBookmark */ = E3DB35FE0E299DC1004F1DE5 /* PBXTextBookmark */;
+			E3DB36000E299E34004F1DE5 /* PBXTextBookmark */ = E3DB36000E299E34004F1DE5 /* PBXTextBookmark */;
+			E3DB36020E299E46004F1DE5 /* PBXTextBookmark */ = E3DB36020E299E46004F1DE5 /* PBXTextBookmark */;
+			E3DB36040E299E68004F1DE5 /* PBXTextBookmark */ = E3DB36040E299E68004F1DE5 /* PBXTextBookmark */;
+			E3DB36050E299F4F004F1DE5 /* PBXTextBookmark */ = E3DB36050E299F4F004F1DE5 /* PBXTextBookmark */;
+			E3DB36060E299F90004F1DE5 /* PBXTextBookmark */ = E3DB36060E299F90004F1DE5 /* PBXTextBookmark */;
+			E3DB36080E299FA7004F1DE5 /* PBXTextBookmark */ = E3DB36080E299FA7004F1DE5 /* PBXTextBookmark */;
+			E3DB36120E29A0C0004F1DE5 /* PBXTextBookmark */ = E3DB36120E29A0C0004F1DE5 /* PBXTextBookmark */;
+			E3DB36140E29A11F004F1DE5 /* PBXTextBookmark */ = E3DB36140E29A11F004F1DE5 /* PBXTextBookmark */;
+			E3DB36150E29A1B6004F1DE5 /* PBXTextBookmark */ = E3DB36150E29A1B6004F1DE5 /* PBXTextBookmark */;
+			E3DB36180E29A380004F1DE5 /* PBXTextBookmark */ = E3DB36180E29A380004F1DE5 /* PBXTextBookmark */;
+			E3DB361A0E29E6F2004F1DE5 /* PBXTextBookmark */ = E3DB361A0E29E6F2004F1DE5 /* PBXTextBookmark */;
+			E3DB361D0E29E7D1004F1DE5 /* PBXTextBookmark */ = E3DB361D0E29E7D1004F1DE5 /* PBXTextBookmark */;
+			E3DB361F0E29E81A004F1DE5 /* PBXTextBookmark */ = E3DB361F0E29E81A004F1DE5 /* PBXTextBookmark */;
+			E3DB36210E29E83E004F1DE5 /* PBXTextBookmark */ = E3DB36210E29E83E004F1DE5 /* PBXTextBookmark */;
 		};
 		sourceControlManager = E36677CB0E2146F1000AA775 /* Source Control */;
 		userBuildSettings = {
@@ -1065,16 +1122,16 @@
 		fRef = E300F31A0E26931400DDCDFE /* PlexViz.cpp */;
 		name = "PlexViz.cpp: 15";
 		rLen = 0;
-		rLoc = 14652;
+		rLoc = 15644;
 		rType = 0;
 		vrLen = 150;
 		vrLoc = 0;
 	};
 	E3DB34920E294A4B004F1DE5 /* PlexViz.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1111, 6510}}";
-			sepNavSelRange = "{5364, 0}";
-			sepNavVisRange = "{4623, 2142}";
+			sepNavIntBoundsRect = "{{0, 0}, {1111, 6804}}";
+			sepNavSelRange = "{13661, 0}";
+			sepNavVisRange = "{12615, 1793}";
 		};
 	};
 	E3DB34960E294A62004F1DE5 /* PBXTextBookmark */ = {
@@ -1112,7 +1169,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 59";
 		rLen = 0;
-		rLoc = 14652;
+		rLoc = 15644;
 		rType = 0;
 		vrLen = 978;
 		vrLoc = 0;
@@ -1122,7 +1179,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 42";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 1109;
 		vrLoc = 0;
@@ -1132,7 +1189,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 42";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 1109;
 		vrLoc = 0;
@@ -1142,7 +1199,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 42";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 1109;
 		vrLoc = 0;
@@ -1152,7 +1209,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 80";
 		rLen = 0;
-		rLoc = 14305;
+		rLoc = 15285;
 		rType = 0;
 		vrLen = 1276;
 		vrLoc = 729;
@@ -1162,7 +1219,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 102";
 		rLen = 0;
-		rLoc = 14539;
+		rLoc = 15531;
 		rType = 0;
 		vrLen = 1643;
 		vrLoc = 1017;
@@ -1172,7 +1229,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 94";
 		rLen = 0;
-		rLoc = 14305;
+		rLoc = 15285;
 		rType = 0;
 		vrLen = 1654;
 		vrLoc = 1017;
@@ -1192,7 +1249,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 64";
 		rLen = 0;
-		rLoc = 13476;
+		rLoc = 14456;
 		rType = 0;
 		vrLen = 1438;
 		vrLoc = 0;
@@ -1202,7 +1259,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 64";
 		rLen = 0;
-		rLoc = 13476;
+		rLoc = 14456;
 		rType = 0;
 		vrLen = 1109;
 		vrLoc = 0;
@@ -1222,7 +1279,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 21";
 		rLen = 0;
-		rLoc = 7630;
+		rLoc = 8196;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 0;
@@ -1242,7 +1299,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 21";
 		rLen = 0;
-		rLoc = 7630;
+		rLoc = 8196;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 0;
@@ -1252,7 +1309,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 21";
 		rLen = 0;
-		rLoc = 7630;
+		rLoc = 8196;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 0;
@@ -1272,7 +1329,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.cpp: 21";
 		rLen = 0;
-		rLoc = 7630;
+		rLoc = 8196;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 0;
@@ -1292,7 +1349,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 35";
 		rLen = 0;
-		rLoc = 7631;
+		rLoc = 8197;
 		rType = 0;
 		vrLen = 1602;
 		vrLoc = 0;
@@ -1322,7 +1379,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 22";
 		rLen = 0;
-		rLoc = 663;
+		rLoc = 831;
 		rType = 0;
 		vrLen = 1440;
 		vrLoc = 0;
@@ -1332,7 +1389,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 106";
 		rLen = 0;
-		rLoc = 14305;
+		rLoc = 15285;
 		rType = 0;
 		vrLen = 1448;
 		vrLoc = 0;
@@ -1352,7 +1409,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 22";
 		rLen = 0;
-		rLoc = 663;
+		rLoc = 831;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 0;
@@ -1372,7 +1429,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 46";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1570;
 		vrLoc = 0;
@@ -1382,7 +1439,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 32";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1782;
 		vrLoc = 374;
@@ -1392,7 +1449,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 32";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1713;
 		vrLoc = 374;
@@ -1422,7 +1479,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 32";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1782;
 		vrLoc = 374;
@@ -1452,7 +1509,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 32";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1713;
 		vrLoc = 374;
@@ -1512,7 +1569,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 32";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1713;
 		vrLoc = 374;
@@ -1532,7 +1589,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 34";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1627;
 		vrLoc = 374;
@@ -1542,7 +1599,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 34";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1628;
 		vrLoc = 374;
@@ -1572,7 +1629,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 50";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 2149;
 		vrLoc = 185;
@@ -1582,7 +1639,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 34";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1629;
 		vrLoc = 169;
@@ -1602,7 +1659,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 50";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 2149;
 		vrLoc = 185;
@@ -1622,7 +1679,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 155";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 2244;
 		vrLoc = 276;
@@ -1632,7 +1689,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 220";
 		rLen = 0;
-		rLoc = 7687;
+		rLoc = 8253;
 		rType = 0;
 		vrLen = 1618;
 		vrLoc = 6518;
@@ -1642,7 +1699,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 158";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 2395;
 		vrLoc = 4381;
@@ -1662,7 +1719,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 158";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 2092;
 		vrLoc = 5262;
@@ -1672,7 +1729,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 158";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 2094;
 		vrLoc = 5262;
@@ -1692,7 +1749,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 281";
 		rLen = 0;
-		rLoc = 10039;
+		rLoc = 10675;
 		rType = 0;
 		vrLen = 2134;
 		vrLoc = 6265;
@@ -1712,7 +1769,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 341";
 		rLen = 0;
-		rLoc = 13455;
+		rLoc = 14435;
 		rType = 0;
 		vrLen = 2105;
 		vrLoc = 7444;
@@ -1722,7 +1779,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 341";
 		rLen = 0;
-		rLoc = 13455;
+		rLoc = 14435;
 		rType = 0;
 		vrLen = 2140;
 		vrLoc = 7409;
@@ -1742,7 +1799,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 25";
 		rLen = 0;
-		rLoc = 662;
+		rLoc = 830;
 		rType = 0;
 		vrLen = 1708;
 		vrLoc = 0;
@@ -1778,7 +1835,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 25";
 		rLen = 0;
-		rLoc = 662;
+		rLoc = 830;
 		rType = 0;
 		vrLen = 1708;
 		vrLoc = 0;
@@ -1788,7 +1845,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 25";
 		rLen = 0;
-		rLoc = 662;
+		rLoc = 830;
 		rType = 0;
 		vrLen = 1708;
 		vrLoc = 0;
@@ -1824,7 +1881,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 166";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1996;
 		vrLoc = 7090;
@@ -1844,7 +1901,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 250";
 		rLen = 0;
-		rLoc = 8245;
+		rLoc = 8881;
 		rType = 0;
 		vrLen = 1742;
 		vrLoc = 7258;
@@ -1854,7 +1911,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 232";
 		rLen = 0;
-		rLoc = 7945;
+		rLoc = 8473;
 		rType = 0;
 		vrLen = 2016;
 		vrLoc = 6336;
@@ -1874,7 +1931,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 250";
 		rLen = 0;
-		rLoc = 8245;
+		rLoc = 8881;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 7258;
@@ -1894,7 +1951,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 346";
 		rLen = 0;
-		rLoc = 11608;
+		rLoc = 12244;
 		rType = 0;
 		vrLen = 1696;
 		vrLoc = 10767;
@@ -1914,7 +1971,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 346";
 		rLen = 0;
-		rLoc = 11608;
+		rLoc = 12244;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 11085;
@@ -1924,7 +1981,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 346";
 		rLen = 0;
-		rLoc = 11608;
+		rLoc = 12244;
 		rType = 0;
 		vrLen = 1484;
 		vrLoc = 11116;
@@ -1944,7 +2001,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 360";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 1624;
 		vrLoc = 11085;
@@ -1964,7 +2021,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 365";
 		rLen = 12;
-		rLoc = 12452;
+		rLoc = 13182;
 		rType = 0;
 		vrLen = 1707;
 		vrLoc = 11085;
@@ -1974,7 +2031,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 365";
 		rLen = 12;
-		rLoc = 12452;
+		rLoc = 13182;
 		rType = 0;
 		vrLen = 1707;
 		vrLoc = 11085;
@@ -1994,7 +2051,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 365";
 		rLen = 0;
-		rLoc = 12492;
+		rLoc = 13226;
 		rType = 0;
 		vrLen = 1707;
 		vrLoc = 11085;
@@ -2004,7 +2061,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 365";
 		rLen = 0;
-		rLoc = 12492;
+		rLoc = 13226;
 		rType = 0;
 		vrLen = 1724;
 		vrLoc = 12326;
@@ -2014,7 +2071,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 342";
 		rLen = 0;
-		rLoc = 11445;
+		rLoc = 12081;
 		rType = 0;
 		vrLen = 2012;
 		vrLoc = 10034;
@@ -2024,7 +2081,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 246";
 		rLen = 0;
-		rLoc = 8201;
+		rLoc = 8819;
 		rType = 0;
 		vrLen = 2065;
 		vrLoc = 7707;
@@ -2034,7 +2091,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 395";
 		rLen = 0;
-		rLoc = 13382;
+		rLoc = 14362;
 		rType = 0;
 		vrLen = 1504;
 		vrLoc = 11744;
@@ -2064,7 +2121,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 365";
 		rLen = 12;
-		rLoc = 12293;
+		rLoc = 13025;
 		rType = 0;
 		vrLen = 1594;
 		vrLoc = 11137;
@@ -2074,7 +2131,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 365";
 		rLen = 12;
-		rLoc = 12293;
+		rLoc = 13025;
 		rType = 0;
 		vrLen = 1663;
 		vrLoc = 11137;
@@ -2094,7 +2151,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 365";
 		rLen = 12;
-		rLoc = 12293;
+		rLoc = 13025;
 		rType = 0;
 		vrLen = 1594;
 		vrLoc = 11137;
@@ -2114,7 +2171,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 360";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 1534;
 		vrLoc = 11133;
@@ -2134,7 +2191,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 360";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 1534;
 		vrLoc = 11133;
@@ -2144,7 +2201,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 360";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 1534;
 		vrLoc = 11133;
@@ -2164,7 +2221,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 368";
 		rLen = 0;
-		rLoc = 12326;
+		rLoc = 13058;
 		rType = 0;
 		vrLen = 1578;
 		vrLoc = 11531;
@@ -2174,7 +2231,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 368";
 		rLen = 0;
-		rLoc = 12325;
+		rLoc = 13057;
 		rType = 0;
 		vrLen = 1578;
 		vrLoc = 11531;
@@ -2184,7 +2241,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 375";
 		rLen = 0;
-		rLoc = 12549;
+		rLoc = 13263;
 		rType = 0;
 		vrLen = 1665;
 		vrLoc = 11531;
@@ -2194,7 +2251,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 375";
 		rLen = 0;
-		rLoc = 12549;
+		rLoc = 13263;
 		rType = 0;
 		vrLen = 1677;
 		vrLoc = 11531;
@@ -2204,7 +2261,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 171";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 2130;
 		vrLoc = 4504;
@@ -2214,7 +2271,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 67";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1855;
 		vrLoc = 2665;
@@ -2224,7 +2281,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 171";
 		rLen = 0;
-		rLoc = 1147;
+		rLoc = 1315;
 		rType = 0;
 		vrLen = 1878;
 		vrLoc = 4157;
@@ -2234,7 +2291,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 355";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 2338;
 		vrLoc = 5227;
@@ -2244,7 +2301,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 355";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 2428;
 		vrLoc = 4634;
@@ -2264,7 +2321,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 355";
 		rLen = 0;
-		rLoc = 12115;
+		rLoc = 12763;
 		rType = 0;
 		vrLen = 2428;
 		vrLoc = 4634;
@@ -2314,7 +2371,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 149";
 		rLen = 0;
-		rLoc = 4722;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 1617;
 		vrLoc = 2982;
@@ -2324,7 +2381,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 149";
 		rLen = 0;
-		rLoc = 4722;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 1617;
 		vrLoc = 2982;
@@ -2334,7 +2391,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 65";
 		rLen = 0;
-		rLoc = 1937;
+		rLoc = 2503;
 		rType = 0;
 		vrLen = 2009;
 		vrLoc = 1317;
@@ -2344,7 +2401,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 233";
 		rLen = 0;
-		rLoc = 7850;
+		rLoc = 8378;
 		rType = 0;
 		vrLen = 2097;
 		vrLoc = 6739;
@@ -2354,7 +2411,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 397";
 		rLen = 0;
-		rLoc = 13383;
+		rLoc = 14363;
 		rType = 0;
 		vrLen = 1692;
 		vrLoc = 12081;
@@ -2364,7 +2421,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 123";
 		rLen = 0;
-		rLoc = 4004;
+		rLoc = 4570;
 		rType = 0;
 		vrLen = 1764;
 		vrLoc = 2698;
@@ -2374,7 +2431,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 123";
 		rLen = 0;
-		rLoc = 4004;
+		rLoc = 4570;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 2698;
@@ -2384,7 +2441,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 123";
 		rLen = 0;
-		rLoc = 4004;
+		rLoc = 4570;
 		rType = 0;
 		vrLen = 1783;
 		vrLoc = 2698;
@@ -2394,7 +2451,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 123";
 		rLen = 0;
-		rLoc = 4003;
+		rLoc = 4569;
 		rType = 0;
 		vrLen = 1827;
 		vrLoc = 2698;
@@ -2404,7 +2461,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 123";
 		rLen = 0;
-		rLoc = 4003;
+		rLoc = 4569;
 		rType = 0;
 		vrLen = 1781;
 		vrLoc = 2698;
@@ -2414,7 +2471,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 123";
 		rLen = 0;
-		rLoc = 4005;
+		rLoc = 4571;
 		rType = 0;
 		vrLen = 1807;
 		vrLoc = 2698;
@@ -2424,7 +2481,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 119";
 		rLen = 0;
-		rLoc = 3730;
+		rLoc = 4296;
 		rType = 0;
 		vrLen = 1841;
 		vrLoc = 2698;
@@ -2434,7 +2491,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 171";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2174;
 		vrLoc = 4515;
@@ -2444,7 +2501,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 171";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2174;
 		vrLoc = 4515;
@@ -2454,7 +2511,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 171";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2174;
 		vrLoc = 4515;
@@ -2464,7 +2521,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 234";
 		rLen = 0;
-		rLoc = 7850;
+		rLoc = 8378;
 		rType = 0;
 		vrLen = 2193;
 		vrLoc = 5832;
@@ -2474,7 +2531,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 171";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2523;
 		vrLoc = 4863;
@@ -2484,7 +2541,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 168";
 		rLen = 0;
-		rLoc = 5182;
+		rLoc = 5748;
 		rType = 0;
 		vrLen = 2520;
 		vrLoc = 4793;
@@ -2524,7 +2581,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 224";
 		rLen = 34;
-		rLoc = 7503;
+		rLoc = 8069;
 		rType = 0;
 		vrLen = 1905;
 		vrLoc = 10628;
@@ -2534,7 +2591,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 168";
 		rLen = 0;
-		rLoc = 5182;
+		rLoc = 5748;
 		rType = 0;
 		vrLen = 2520;
 		vrLoc = 4793;
@@ -2554,7 +2611,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 168";
 		rLen = 0;
-		rLoc = 5182;
+		rLoc = 5748;
 		rType = 0;
 		vrLen = 1984;
 		vrLoc = 10120;
@@ -2594,7 +2651,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 224";
 		rLen = 34;
-		rLoc = 7503;
+		rLoc = 8069;
 		rType = 0;
 		vrLen = 1907;
 		vrLoc = 10628;
@@ -2614,7 +2671,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 350";
 		rLen = 0;
-		rLoc = 11831;
+		rLoc = 12467;
 		rType = 0;
 		vrLen = 1859;
 		vrLoc = 10628;
@@ -2624,7 +2681,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 399";
 		rLen = 6;
-		rLoc = 13389;
+		rLoc = 14369;
 		rType = 0;
 		vrLen = 1696;
 		vrLoc = 12542;
@@ -2634,7 +2691,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 399";
 		rLen = 0;
-		rLoc = 13420;
+		rLoc = 14400;
 		rType = 0;
 		vrLen = 1695;
 		vrLoc = 12542;
@@ -2644,7 +2701,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 398";
 		rLen = 0;
-		rLoc = 13382;
+		rLoc = 14362;
 		rType = 0;
 		vrLen = 1637;
 		vrLoc = 12454;
@@ -2654,7 +2711,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 398";
 		rLen = 0;
-		rLoc = 13382;
+		rLoc = 14362;
 		rType = 0;
 		vrLen = 1637;
 		vrLoc = 12454;
@@ -2664,7 +2721,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 403";
 		rLen = 0;
-		rLoc = 13444;
+		rLoc = 14424;
 		rType = 0;
 		vrLen = 1747;
 		vrLoc = 12223;
@@ -2684,7 +2741,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 233";
 		rLen = 0;
-		rLoc = 7686;
+		rLoc = 8252;
 		rType = 0;
 		vrLen = 1888;
 		vrLoc = 6717;
@@ -2694,7 +2751,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 172";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2517;
 		vrLoc = 4830;
@@ -2704,7 +2761,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 172";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2517;
 		vrLoc = 4830;
@@ -2724,7 +2781,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 172";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2517;
 		vrLoc = 4830;
@@ -2754,7 +2811,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 172";
 		rLen = 0;
-		rLoc = 5363;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 2476;
 		vrLoc = 4830;
@@ -2774,7 +2831,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 227";
 		rLen = 0;
-		rLoc = 7624;
+		rLoc = 8190;
 		rType = 0;
 		vrLen = 1922;
 		vrLoc = 6428;
@@ -2784,7 +2841,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 362";
 		rLen = 0;
-		rLoc = 11976;
+		rLoc = 12612;
 		rType = 0;
 		vrLen = 1874;
 		vrLoc = 10556;
@@ -2794,7 +2851,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 124";
 		rLen = 0;
-		rLoc = 3899;
+		rLoc = 4465;
 		rType = 0;
 		vrLen = 1632;
 		vrLoc = 3143;
@@ -2804,7 +2861,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 241";
 		rLen = 0;
-		rLoc = 7770;
+		rLoc = 8299;
 		rType = 0;
 		vrLen = 1752;
 		vrLoc = 7423;
@@ -2814,7 +2871,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 236";
 		rLen = 0;
-		rLoc = 7649;
+		rLoc = 8215;
 		rType = 0;
 		vrLen = 1886;
 		vrLoc = 6793;
@@ -2824,7 +2881,7 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 236";
 		rLen = 0;
-		rLoc = 7649;
+		rLoc = 8215;
 		rType = 0;
 		vrLen = 1813;
 		vrLoc = 7527;
@@ -2834,9 +2891,579 @@
 		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
 		name = "PlexViz.m: 176";
 		rLen = 0;
-		rLoc = 5364;
+		rLoc = 5930;
 		rType = 0;
 		vrLen = 2142;
 		vrLoc = 4623;
+	};
+	E3DB35A40E296B49004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 457";
+		rLen = 0;
+		rLoc = 15424;
+		rType = 0;
+		vrLen = 1767;
+		vrLoc = 12909;
+	};
+	E3DB35A60E296BD0004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 389";
+		rLen = 0;
+		rLoc = 13166;
+		rType = 0;
+		vrLen = 1585;
+		vrLoc = 11534;
+	};
+	E3DB35A90E29726B004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 389";
+		rLen = 0;
+		rLoc = 13166;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 11795;
+	};
+	E3DB35AA0E29726B004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 386";
+		rLen = 0;
+		rLoc = 13122;
+		rType = 0;
+		vrLen = 1463;
+		vrLoc = 11795;
+	};
+	E3DB35AC0E29739A004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 58";
+		rLen = 0;
+		rLoc = 2092;
+		rType = 0;
+		vrLen = 2331;
+		vrLoc = 341;
+	};
+	E3DB35AD0E29801B004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 387";
+		rLen = 0;
+		rLoc = 13122;
+		rType = 0;
+		vrLen = 1578;
+		vrLoc = 11740;
+	};
+	E3DB35B00E29846C004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 400";
+		rLen = 0;
+		rLoc = 13289;
+		rType = 0;
+		vrLen = 1600;
+		vrLoc = 11740;
+	};
+	E3DB35B20E298538004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 398";
+		rLen = 0;
+		rLoc = 13288;
+		rType = 0;
+		vrLen = 1698;
+		vrLoc = 11740;
+	};
+	E3DB35B40E29858E004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 389";
+		rLen = 0;
+		rLoc = 13122;
+		rType = 0;
+		vrLen = 1765;
+		vrLoc = 11740;
+	};
+	E3DB35B60E2985C6004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 383";
+		rLen = 0;
+		rLoc = 13039;
+		rType = 0;
+		vrLen = 1773;
+		vrLoc = 11740;
+	};
+	E3DB35B70E298620004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 394";
+		rLen = 0;
+		rLoc = 13263;
+		rType = 0;
+		vrLen = 1744;
+		vrLoc = 11740;
+	};
+	E3DB35B90E29866A004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 389";
+		rLen = 0;
+		rLoc = 13122;
+		rType = 0;
+		vrLen = 1867;
+		vrLoc = 11413;
+	};
+	E3DB35BB0E29888E004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 400";
+		rLen = 0;
+		rLoc = 13289;
+		rType = 0;
+		vrLen = 1481;
+		vrLoc = 11957;
+	};
+	E3DB35BD0E29968E004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 243";
+		rLen = 0;
+		rLoc = 8299;
+		rType = 0;
+		vrLen = 1651;
+		vrLoc = 7700;
+	};
+	E3DB35BF0E2996BA004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 388";
+		rLen = 0;
+		rLoc = 13122;
+		rType = 0;
+		vrLen = 1376;
+		vrLoc = 11888;
+	};
+	E3DB35C80E2997D3004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 392";
+		rLen = 0;
+		rLoc = 13276;
+		rType = 0;
+		vrLen = 1421;
+		vrLoc = 11888;
+	};
+	E3DB35CA0E299869004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 392";
+		rLen = 0;
+		rLoc = 13288;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 11888;
+	};
+	E3DB35CC0E2998C1004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 59";
+		rLen = 0;
+		rLoc = 2092;
+		rType = 0;
+		vrLen = 2306;
+		vrLoc = 664;
+	};
+	E3DB35CD0E2998FB004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 62";
+		rLen = 0;
+		rLoc = 2258;
+		rType = 0;
+		vrLen = 1397;
+		vrLoc = 12085;
+	};
+	E3DB35CE0E299931004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 403";
+		rLen = 0;
+		rLoc = 13293;
+		rType = 0;
+		vrLen = 1399;
+		vrLoc = 12085;
+	};
+	E3DB35D00E299983004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 381";
+		rLen = 0;
+		rLoc = 12762;
+		rType = 0;
+		vrLen = 1419;
+		vrLoc = 12085;
+	};
+	E3DB35D20E2999C5004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 400";
+		rLen = 0;
+		rLoc = 13204;
+		rType = 0;
+		vrLen = 1379;
+		vrLoc = 12085;
+	};
+	E3DB35D40E2999FC004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 401";
+		rLen = 0;
+		rLoc = 13263;
+		rType = 0;
+		vrLen = 1387;
+		vrLoc = 12085;
+	};
+	E3DB35D60E299A52004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 412";
+		rLen = 0;
+		rLoc = 13293;
+		rType = 0;
+		vrLen = 1399;
+		vrLoc = 11952;
+	};
+	E3DB35D80E299A5A004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 386";
+		rLen = 0;
+		rLoc = 12840;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 11952;
+	};
+	E3DB35DA0E299A63004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 386";
+		rLen = 0;
+		rLoc = 12806;
+		rType = 0;
+		vrLen = 1442;
+		vrLoc = 11952;
+	};
+	E3DB35DC0E299A8C004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 389";
+		rLen = 0;
+		rLoc = 12956;
+		rType = 0;
+		vrLen = 1442;
+		vrLoc = 11952;
+	};
+	E3DB35DE0E299AB9004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 409";
+		rLen = 0;
+		rLoc = 13293;
+		rType = 0;
+		vrLen = 1531;
+		vrLoc = 11952;
+	};
+	E3DB35E00E299AE5004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 393";
+		rLen = 0;
+		rLoc = 13095;
+		rType = 0;
+		vrLen = 1519;
+		vrLoc = 11952;
+	};
+	E3DB35E20E299AFD004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 402";
+		rLen = 0;
+		rLoc = 13263;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 11952;
+	};
+	E3DB35E40E299B3A004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 402";
+		rLen = 0;
+		rLoc = 13281;
+		rType = 0;
+		vrLen = 1509;
+		vrLoc = 11952;
+	};
+	E3DB35E80E299BA7004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 181";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2389;
+		vrLoc = 5104;
+	};
+	E3DB35EA0E299BAF004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 181";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2389;
+		vrLoc = 5104;
+	};
+	E3DB35EC0E299C18004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 386";
+		rLen = 0;
+		rLoc = 12952;
+		rType = 0;
+		vrLen = 1538;
+		vrLoc = 12026;
+	};
+	E3DB35EE0E299C3C004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2317;
+		vrLoc = 5436;
+	};
+	E3DB35EF0E299C85004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 256";
+		rLen = 0;
+		rLoc = 8551;
+		rType = 0;
+		vrLen = 1607;
+		vrLoc = 7691;
+	};
+	E3DB35F20E299C90004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2111;
+		vrLoc = 5184;
+	};
+	E3DB35F40E299CA7004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2111;
+		vrLoc = 5184;
+	};
+	E3DB35F60E299CEB004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 387";
+		rLen = 0;
+		rLoc = 12798;
+		rType = 0;
+		vrLen = 1615;
+		vrLoc = 12240;
+	};
+	E3DB35F80E299D42004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 5290;
+	};
+	E3DB35FA0E299D5A004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 5290;
+	};
+	E3DB35FC0E299D7B004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 5290;
+	};
+	E3DB35FE0E299DC1004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 5290;
+	};
+	E3DB36000E299E34004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 5290;
+	};
+	E3DB36020E299E46004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 185";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 5290;
+	};
+	E3DB36040E299E68004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 184";
+		rLen = 0;
+		rLoc = 5917;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 5290;
+	};
+	E3DB36050E299F4F004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 388";
+		rLen = 0;
+		rLoc = 12793;
+		rType = 0;
+		vrLen = 1590;
+		vrLoc = 7727;
+	};
+	E3DB36060E299F90004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 406";
+		rLen = 0;
+		rLoc = 13377;
+		rType = 0;
+		vrLen = 1599;
+		vrLoc = 12433;
+	};
+	E3DB36080E299FA7004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 402";
+		rLen = 0;
+		rLoc = 13288;
+		rType = 0;
+		vrLen = 1599;
+		vrLoc = 12433;
+	};
+	E3DB36120E29A0C0004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 417";
+		rLen = 0;
+		rLoc = 13656;
+		rType = 0;
+		vrLen = 1537;
+		vrLoc = 12433;
+	};
+	E3DB36140E29A11F004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 418";
+		rLen = 0;
+		rLoc = 13740;
+		rType = 0;
+		vrLen = 1601;
+		vrLoc = 12433;
+	};
+	E3DB36150E29A1B6004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 416";
+		rLen = 0;
+		rLoc = 13655;
+		rType = 0;
+		vrLen = 1607;
+		vrLoc = 12433;
+	};
+	E3DB36180E29A380004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 416";
+		rLen = 0;
+		rLoc = 13661;
+		rType = 0;
+		vrLen = 1629;
+		vrLoc = 12448;
+	};
+	E3DB361A0E29E6F2004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 186";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2419;
+		vrLoc = 5491;
+	};
+	E3DB361D0E29E7D1004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 186";
+		rLen = 0;
+		rLoc = 5929;
+		rType = 0;
+		vrLen = 2169;
+		vrLoc = 5239;
+	};
+	E3DB361F0E29E81A004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 389";
+		rLen = 0;
+		rLoc = 12798;
+		rType = 0;
+		vrLen = 1791;
+		vrLoc = 12615;
+	};
+	E3DB36210E29E83E004F1DE5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */;
+		name = "PlexViz.m: 415";
+		rLen = 0;
+		rLoc = 13661;
+		rType = 0;
+		vrLen = 1793;
+		vrLoc = 12615;
 	};
 }

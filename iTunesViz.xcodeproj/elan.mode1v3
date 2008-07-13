@@ -290,7 +290,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {186, 958}}</string>
+							<string>{{0, 0}, {186, 901}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -302,14 +302,14 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {203, 976}}</string>
+						<string>{{0, 0}, {203, 919}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>571 145 1304 1017 0 0 1920 1178 </string>
+						<string>460 204 1193 960 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -339,7 +339,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E3DB35A20E296A8A004F1DE5</string>
+										<string>E3DB36210E29E83E004F1DE5</string>
 										<key>history</key>
 										<array>
 											<string>E347C7710E2193A4002F3DCA</string>
@@ -352,7 +352,7 @@
 											<string>E3DB35740E29654E004F1DE5</string>
 											<string>E3DB35750E29654E004F1DE5</string>
 											<string>E3DB35920E296881004F1DE5</string>
-											<string>E3DB35930E296881004F1DE5</string>
+											<string>E3DB35A90E29726B004F1DE5</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -439,14 +439,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1096, 885}}</string>
+								<string>{{0, 0}, {985, 828}}</string>
 								<key>RubberWindowFrame</key>
-								<string>571 145 1304 1017 0 0 1920 1178 </string>
+								<string>460 204 1193 960 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>885pt</string>
+							<string>828pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -459,9 +459,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 890}, {1096, 86}}</string>
+								<string>{{0, 833}, {985, 86}}</string>
 								<key>RubberWindowFrame</key>
-								<string>571 145 1304 1017 0 0 1920 1178 </string>
+								<string>460 204 1193 960 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -470,7 +470,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>1096pt</string>
+					<string>985pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -628,7 +628,7 @@
 		<string>/Volumes/Whopper/Users/elan/Code/Cocoa/iTunesViz/iTunesViz.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>571 145 1304 1017 0 0 1920 1178 </string>
+	<string>460 204 1193 960 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

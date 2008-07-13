@@ -26,7 +26,11 @@ bool                hasSentDisplay = false;
 bool                isStopped = false;
 CGrafPtr            displayPort = 0;
 int                 x, y, w, h;
+int                 timeBetweenCalls = 0;
 char                strAlbumArtFile[1024];
+int                 numWaveformChannels = 0;
+int                 numSpectrumChannels = 0;
+long                sampleTime = 0;
 
 #define VIS_ACTION_NEXT_PRESET    1
 #define VIS_ACTION_PREV_PRESET    2
@@ -54,7 +58,13 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
         printf(" -> Wants configure.\n");
       if (msg->options & kVisualProvidesUnicodeName)
         printf(" -> Provides unicode name.\n");
+      printf(" -> Requested %d spectrum channels.\n", msg->numSpectrumChannels);
+      printf(" -> Requested %d waveform channels.\n", msg->numWaveformChannels);
+      printf(" -> Time between data in ms: %d\n", msg->timeBetweenDataInMS);
       
+      numSpectrumChannels = msg->numSpectrumChannels;
+      numWaveformChannels = msg->numWaveformChannels;
+      timeBetweenCalls = msg->timeBetweenDataInMS;
       options = msg->options;
       handlerProc = msg->handler;
       handlerData = msg->registerRefCon;
@@ -238,11 +248,13 @@ void Render()
 
   if (options & kVisualWantsIdleMessages)
   {
-    printf("Sending idle message\n");
     VisualPluginIdleMessage idleMsg;
     idleMsg.timeBetweenDataInMS = 20;
     handlerProc(kVisualPluginIdleMessage, (struct VisualPluginMessageInfo* )&idleMsg, handlerData);
   }
+  
+  // Tell plugin to update.
+  handlerProc(kVisualPluginUpdateMessage, 0, handlerData);
 }
 
 void toPascal(char* str, Str255 strPascal)
@@ -255,6 +267,7 @@ void Start(int iChannels, int iSamplesPerSec, int iBitsPerSample, const char* sz
 {
   printf("Start [%s]\n", szSongName);
   isStopped = false;
+  sampleTime = 0;
 }
 
 void Display()
@@ -367,33 +380,41 @@ void Stop()
   hasSentDisplay = false;
 }
 
-void AudioData(short* pAudioData, int iAudioDataLength, float *pFreqData, int iFreqDataLength)
+void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreqData, int iFreqDataLength)
 {
   if (isStopped == true)
     return;
 
   RenderVisualData visualData;
-  visualData.numSpectrumChannels = 2;
-  visualData.numWaveformChannels = 2;
+  //memset(&visualData, 0, sizeof(visualData));
+  visualData.numSpectrumChannels = numSpectrumChannels;
+  visualData.numWaveformChannels = numWaveformChannels;
   
   for (int x=0; x<iAudioDataLength; x+=2)
   {
     visualData.waveformData[0][x] = pAudioData[x] >> 8;
     visualData.waveformData[1][x] = pAudioData[x+1] >> 8;
   }
-  
+
   for (int x=0; x<iFreqDataLength; x+=2)
   {
-    visualData.spectrumData[0][x] = pFreqData[x] * 256;
-    visualData.spectrumData[1][x] = pFreqData[x+1] * 256;
+    visualData.spectrumData[0][x] = pFreqData[x]/600.0*256;
+    visualData.spectrumData[1][x] = pFreqData[x+1]/600.0*256;
   }
-  
+
   VisualPluginRenderMessage renderMsg;
-  renderMsg.currentPositionInMS = 0;
+  renderMsg.currentPositionInMS = sampleTime;
   renderMsg.timeStampID = 0;
   renderMsg.renderData = &visualData;
   
   handlerProc(kVisualPluginRenderMessage, (struct VisualPluginMessageInfo* )&renderMsg, handlerData);
+  
+  // Update the time.
+  VisualPluginSetPositionMessage posMsg;
+  posMsg.positionTimeInMS = sampleTime;
+  //handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, handlerData);
+  
+  sampleTime += 16;
 }
 
 void GetInfo(VIS_INFO* pInfo)
@@ -454,7 +475,7 @@ void get_module(struct Visualisation* pVisz)
 {
   pVisz->Create = Create;
   pVisz->Start = Start;
-  pVisz->AudioData = AudioData;
+  pVisz->AudioData = Plex_iTunes_AudioData;
   pVisz->Render = Render;
   pVisz->Stop = Stop;
   pVisz->GetInfo = GetInfo;
