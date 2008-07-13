@@ -31,6 +31,7 @@ char                strAlbumArtFile[1024];
 int                 numWaveformChannels = 0;
 int                 numSpectrumChannels = 0;
 long                sampleTime = 0;
+long                timestampID = 0;
 
 #define VIS_ACTION_NEXT_PRESET    1
 #define VIS_ACTION_PREV_PRESET    2
@@ -131,8 +132,6 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       PlayerGetCurrentTrackCoverArtMessage* msg = &messageInfo->u.getCurrentTrackCoverArtMessage;
       msg->coverArt = 0;
       msg->coverArtFormat = 0;
-      break;
-      
       
       // Load file.
       NSString *path = [NSString stringWithUTF8String:strAlbumArtFile];
@@ -147,9 +146,17 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
         msg->coverArt = handle;
         
         NSString* type = NSHFSTypeOfFile(path);
-        msg->coverArtFormat = NSHFSTypeCodeFromFileType(type);
-
-        printf("Cover Art: %p, Cover Art Format: %s\n", msg->coverArt, msg->coverArtFormat);
+        NSLog(@"Type: %@ (length=%d)", type, [type length]);
+        if ([type length] == 2)
+        {
+          msg->coverArtFormat = ('J' << 24) | ('P' << 16) | ('E' << 8) | 'G';
+        }
+        else
+        {
+          msg->coverArtFormat = NSHFSTypeCodeFromFileType(type);  
+        }
+          
+        printf("Cover Art: %p\n", msg->coverArt);
         
         [type release];
         [imageData release];
@@ -183,7 +190,7 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
   CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
   CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
   
-  int i = 1;
+  int i = 6;
   bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
   printf("---------------------------------------------\n");
   printf("Bundle: %08lx\n", bundle);
@@ -386,14 +393,16 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
     return;
 
   RenderVisualData visualData;
-  //memset(&visualData, 0, sizeof(visualData));
+  memset(&visualData, 0, sizeof(visualData));
   visualData.numSpectrumChannels = numSpectrumChannels;
   visualData.numWaveformChannels = numWaveformChannels;
-  
-  for (int x=0; x<iAudioDataLength; x+=2)
+ 
+  int index = 0; 
+  for (int x=0; x<iAudioDataLength*2; x+=2)
   {
-    visualData.waveformData[0][x] = pAudioData[x] >> 8;
-    visualData.waveformData[1][x] = pAudioData[x+1] >> 8;
+    visualData.waveformData[0][index] = (pAudioData[x] + 32768)   >> 8;
+    visualData.waveformData[1][index] = (pAudioData[x+1] + 32768) >> 8;
+    index++;
   }
 
   for (int x=0; x<iFreqDataLength; x+=2)
@@ -404,15 +413,14 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
 
   VisualPluginRenderMessage renderMsg;
   renderMsg.currentPositionInMS = sampleTime;
-  renderMsg.timeStampID = 0;
-  renderMsg.renderData = &visualData;
-  
+  renderMsg.timeStampID = timestampID++;
+  renderMsg.renderData = &visualData;  
   handlerProc(kVisualPluginRenderMessage, (struct VisualPluginMessageInfo* )&renderMsg, handlerData);
   
   // Update the time.
   VisualPluginSetPositionMessage posMsg;
   posMsg.positionTimeInMS = sampleTime;
-  //handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, handlerData);
+  handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, handlerData);
   
   sampleTime += 16;
 }

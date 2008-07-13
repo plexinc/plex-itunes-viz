@@ -157,7 +157,7 @@ void toPascal(char* str, Str255 strPascal)
 
 - (IBAction)menuNew:(id)sender 
 { 
-  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
+  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
   CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
   
   // Read iTunes preferences.
@@ -165,7 +165,7 @@ void toPascal(char* str, Str255 strPascal)
   
   //int arrayCount = CFArrayGetCount(bundleArray);
   //for (int i=0; i<arrayCount; i++)
-  int i = 1;
+  int i = 7;
   {
     bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
     NSLog(@"---------------------------------------------");
