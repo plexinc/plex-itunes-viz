@@ -31,6 +31,8 @@ char                strAlbumArtFile[1024];
 int                 numWaveformChannels = 0;
 int                 numSpectrumChannels = 0;
 long                sampleTime = 0;
+char                strArtist[1024], strAlbum[1024], strTrack[1024];
+int                 theTrackNumber, theDiscNumber, theYear, theDuration;
 long                timestampID = 0;
 
 #define VIS_ACTION_NEXT_PRESET    1
@@ -132,7 +134,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       PlayerGetCurrentTrackCoverArtMessage* msg = &messageInfo->u.getCurrentTrackCoverArtMessage;
       msg->coverArt = 0;
       msg->coverArtFormat = 0;
-      
+      break;
       // Load file.
       NSString *path = [NSString stringWithUTF8String:strAlbumArtFile];
       NSData* imageData = [[NSData alloc] initWithContentsOfFile:path];
@@ -187,10 +189,10 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
   h = iHeight;
   printf("Device is %p @ %d,%d %dx%d\n", graphicsPort, x, y, w, h);
 
-  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
+  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
   CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
   
-  int i = 6;
+  int i = 1; //6
   bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
   printf("---------------------------------------------\n");
   printf("Bundle: %08lx\n", bundle);
@@ -305,15 +307,15 @@ void Display()
   playMsg.audioFormat.mSampleRate = 44100.0;
       
   // Track info.
-  toPascal("The Track", trackInfo.name);
-  toPascal("The Album", trackInfo.album);
-  toPascal("The Artist", trackInfo.artist);
+  toPascal(strTrack, trackInfo.name);
+  toPascal(strAlbum, trackInfo.album);
+  toPascal(strArtist, trackInfo.artist);
   toPascal("Genre", trackInfo.genre);
   toPascal("filename.mp3", trackInfo.fileName);
   toPascal("MPEG Audio File", trackInfo.kind);
-  trackInfo.trackNumber = 1;
+  trackInfo.trackNumber = theTrackNumber;
   trackInfo.numTracks = 10;
-  trackInfo.year = 2007;
+  trackInfo.year = theYear;
   trackInfo.soundVolumeAdjustment = 0;
   toPascal("Flat", trackInfo.eqPresetName);
   toPascal("Comments", trackInfo.comments);
@@ -340,14 +342,17 @@ void Display()
   trackInfoUnicode.attributes = 0;
   trackInfoUnicode.validAttributes = 0;
 
-  CFStringRef strAlbum = CFSTR("Album");
-  CFStringGetCharacters(strAlbum, CFRangeMake(0, CFStringGetLength(strAlbum)), trackInfoUnicode.album);
+  CFStringRef uniArtist = CFStringCreateWithCString(nil, strArtist, kCFStringEncodingUTF8);
+  CFStringGetCharacters(uniArtist, CFRangeMake(0, CFStringGetLength(uniArtist)), trackInfoUnicode.artist+1);
+  trackInfoUnicode.artist[0] = CFStringGetLength(uniArtist);
 
-  CFStringRef strArtist = CFSTR("Artist");
-  CFStringGetCharacters(strArtist, CFRangeMake(0, CFStringGetLength(strArtist)), trackInfoUnicode.artist);
+  CFStringRef uniAlbum = CFStringCreateWithCString(nil, strAlbum, kCFStringEncodingUTF8);
+  CFStringGetCharacters(uniAlbum, CFRangeMake(0, CFStringGetLength(uniAlbum)), trackInfoUnicode.album+1);
+  trackInfoUnicode.album[0] = CFStringGetLength(uniAlbum);
 
-  CFStringRef strTrack = CFSTR("Track");
-  CFStringGetCharacters(strTrack, CFRangeMake(0, CFStringGetLength(strTrack)), trackInfoUnicode.name);
+  CFStringRef uniTrack = CFStringCreateWithCString(nil, strTrack, kCFStringEncodingUTF8);
+  CFStringGetCharacters(uniTrack, CFRangeMake(0, CFStringGetLength(uniTrack)), trackInfoUnicode.name+1);
+  trackInfoUnicode.name[0] = CFStringGetLength(uniTrack);
   
   // Unicode stream.
   streamInfoUnicode.streamMessage[0] = 0;
@@ -363,12 +368,12 @@ void Display()
     // Show the window.
     VisualPluginShowWindowMessage showMsg;
     showMsg.drawRect.left = x;
-    showMsg.drawRect.top = y+21;
+    showMsg.drawRect.top = y;
     showMsg.drawRect.right = w;
     showMsg.drawRect.bottom = h;
     showMsg.options = 0;
     showMsg.totalVisualizerRect.left = x;
-    showMsg.totalVisualizerRect.top = y+21;
+    showMsg.totalVisualizerRect.top = y;
     showMsg.totalVisualizerRect.right = w;
     showMsg.totalVisualizerRect.bottom = h;
     showMsg.port = displayPort;
@@ -387,6 +392,7 @@ void Stop()
   hasSentDisplay = false;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreqData, int iFreqDataLength)
 {
   if (isStopped == true)
@@ -423,6 +429,14 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
   handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, handlerData);
   
   sampleTime += 16;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Plex_iTunes_SetTrackInfo(const char* artist, const char* album, const char* track, int trackNumber, int discNumber, int year, int duration)
+{
+  strcpy(strArtist, artist);
+  strcpy(strAlbum, album);
+  strcpy(strTrack, track);
 }
 
 void GetInfo(VIS_INFO* pInfo)
@@ -477,6 +491,7 @@ struct Visualisation
     void (*GetSettings)(void* );
     void (*UpdateSetting)(int num);
     void (*GetPresets)(char ***pPresets, int *currentPreset, int *numPresets, bool *locked);
+    void (*SetTrackInfo)(const char* artist, const char* album, const char* track, int trackNumber, int discNumber, int year, int duration);
 };
 
 void get_module(struct Visualisation* pVisz)
@@ -491,4 +506,5 @@ void get_module(struct Visualisation* pVisz)
   pVisz->GetSettings = GetSettings;
   pVisz->UpdateSetting = UpdateSetting;
   pVisz->GetPresets = GetPresets;
+  pVisz->SetTrackInfo = Plex_iTunes_SetTrackInfo;
 };
