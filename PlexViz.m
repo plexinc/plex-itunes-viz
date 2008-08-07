@@ -3,6 +3,7 @@
  *  Copyright 2008 Blue Mandrill Design. All rights reserved.
  *
  */
+#include <AGL/agl.h>
 #include "iTunesAPI.h"
 #include "iTunesVisualAPI.h"
  
@@ -103,8 +104,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       printf("kPlayerGetPluginFileSpecMessage\n");
       PlayerGetPluginFileSpecMessage* msg = &messageInfo->u.getPluginFileSpecMessage;
     
-      CFURLRef cfUrl = CFBundleCopyExecutableURL(bundle);
-      
+      CFURLRef cfUrl = CFBundleCopyBundleURL(bundle);
       FSRef fileRef;
       if (CFURLGetFSRef(cfUrl, &fileRef))
       {
@@ -134,7 +134,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       PlayerGetCurrentTrackCoverArtMessage* msg = &messageInfo->u.getCurrentTrackCoverArtMessage;
       msg->coverArt = 0;
       msg->coverArtFormat = 0;
-      break;
+
       // Load file.
       NSString *path = [NSString stringWithUTF8String:strAlbumArtFile];
       NSData* imageData = [[NSData alloc] initWithContentsOfFile:path];
@@ -150,21 +150,14 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
         NSString* type = NSHFSTypeOfFile(path);
         NSLog(@"Type: %@ (length=%d)", type, [type length]);
         if ([type length] == 2)
-        {
           msg->coverArtFormat = ('J' << 24) | ('P' << 16) | ('E' << 8) | 'G';
-        }
         else
-        {
           msg->coverArtFormat = NSHFSTypeCodeFromFileType(type);  
-        }
           
-        printf("Cover Art: %p\n", msg->coverArt);
-        
-        [type release];
-        [imageData release];
+        //[imageData release];
       }
       
-      [path release];
+      //[path release];
       
       break;
     }
@@ -189,10 +182,10 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
   h = iHeight;
   printf("Device is %p @ %d,%d %dx%d\n", graphicsPort, x, y, w, h);
 
-  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
+  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
   CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
   
-  int i = 1; //6
+  int i = 8;
   bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
   printf("---------------------------------------------\n");
   printf("Bundle: %08lx\n", bundle);
@@ -248,6 +241,8 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
   VisualPluginMessageInfo enableMsg;
   handlerProc(kVisualPluginEnableMessage, &enableMsg, handlerData);
   printf("Enabled.\n");
+  
+  //handlerProc(kVisualPluginConfigureMessage, 0, handlerData);
 }
 
 void Render()
@@ -387,10 +382,13 @@ void Display()
 void Stop()
 {
   printf("Stop\n");
-  handlerProc(kVisualPluginHideWindowMessage, (struct VisualPluginMessageInfo* )0x0, handlerData);
+  handlerProc(kVisualPluginStopMessage, 0x0, handlerData);
+  handlerProc(kVisualPluginHideWindowMessage, 0x0, handlerData);
   isStopped = true;
   hasSentDisplay = false;
 }
+
+#define TO_WAVEFORM(x) (UInt8)((((int)pAudioData[x]) + 32768) >> 8)
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreqData, int iFreqDataLength)
@@ -403,20 +401,32 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
   visualData.numSpectrumChannels = numSpectrumChannels;
   visualData.numWaveformChannels = numWaveformChannels;
  
-  int index = 0; 
+  int index = 0;
   for (int x=0; x<iAudioDataLength*2; x+=2)
-  {
-    visualData.waveformData[0][index] = (pAudioData[x] + 32768)   >> 8;
-    visualData.waveformData[1][index] = (pAudioData[x+1] + 32768) >> 8;
+  {  
+    visualData.waveformData[0][index] = (((int)pAudioData[x]) + 32768)   >> 8;
+    visualData.waveformData[1][index] = (((int)pAudioData[x+1]) + 32768) >> 8;
     index++;
   }
+  
+  index = 0;
+  float min=999, max=-999;
+  for (int x=0; x<iFreqDataLength*2; x+=2)
+  { 
+    int val1 = pFreqData[x];
+    int val2 = pFreqData[x+1];
+  
+    visualData.spectrumData[0][index] = MIN(val1, 255);
+    visualData.spectrumData[1][index] = MIN(val2, 255);
+    
+    if (pFreqData[x] < min)
+      min = pFreqData[x];
+    if (pFreqData[x] > max)
+      max = pFreqData[x];
 
-  for (int x=0; x<iFreqDataLength; x+=2)
-  {
-    visualData.spectrumData[0][x] = pFreqData[x]/600.0*256;
-    visualData.spectrumData[1][x] = pFreqData[x+1]/600.0*256;
+    index++;
   }
-
+      
   VisualPluginRenderMessage renderMsg;
   renderMsg.currentPositionInMS = sampleTime;
   renderMsg.timeStampID = timestampID++;
@@ -428,7 +438,7 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
   posMsg.positionTimeInMS = sampleTime;
   handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, handlerData);
   
-  sampleTime += 16;
+  sampleTime += 60;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

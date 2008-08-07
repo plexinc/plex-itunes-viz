@@ -18,6 +18,7 @@
 		E3DB34200E293EED004F1DE5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DB341F0E293EED004F1DE5 /* OpenGL.framework */; };
 		E3DB34930E294A4B004F1DE5 /* PlexViz.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */; };
 		E3DB34EC0E295496004F1DE5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		E3DB37140E2AFD56004F1DE5 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DB33EA0E293D4C004F1DE5 /* AGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3DB34EC0E295496004F1DE5 /* Cocoa.framework in Frameworks */,
+				E3DB37140E2AFD56004F1DE5 /* AGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

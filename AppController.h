@@ -14,4 +14,5 @@
   IBOutlet NSView* myView;
 }
 - (IBAction)menuNew:(id)sender;
+- (void)tick;
 @end

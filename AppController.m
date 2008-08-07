@@ -157,6 +157,30 @@ void toPascal(char* str, Str255 strPascal)
 
 - (IBAction)menuNew:(id)sender 
 { 
+  NSView* view = myView;
+  
+  // obtain window pixelformat
+  NSOpenGLPixelFormatAttribute wattrs[] =
+  {
+    NSOpenGLPFADoubleBuffer,
+    NSOpenGLPFAWindow,
+    NSOpenGLPFANoRecovery,
+    NSOpenGLPFAAccelerated,
+    //NSOpenGLPFAColorSize, 32,
+    //NSOpenGLPFAAlphaSize, 8,
+    0
+  };
+  NSOpenGLPixelFormat* pixFmt = [[NSOpenGLPixelFormat alloc] initWithAttributes:wattrs];  
+  NSOpenGLContext* newContext = [[NSOpenGLContext alloc] initWithFormat:pixFmt shareContext:nil];
+
+  [pixFmt release];
+    
+  // associate with current view
+  [newContext setView:view];
+  [newContext makeCurrentContext];
+  
+  [newContext clearDrawable];
+
   CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
   CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
   
@@ -165,7 +189,7 @@ void toPascal(char* str, Str255 strPascal)
   
   //int arrayCount = CFArrayGetCount(bundleArray);
   //for (int i=0; i<arrayCount; i++)
-  int i = 7;
+  int i = 3;
   {
     bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
     NSLog(@"---------------------------------------------");
@@ -339,26 +363,42 @@ void toPascal(char* str, Str255 strPascal)
     NSLog(@"Before: %p", aglGetCurrentContext());
     handlerProc(kVisualPluginShowWindowMessage, (struct VisualPluginMessageInfo* )&showMsg, handlerData);
     NSLog(@"After: %p", aglGetCurrentContext());
-    
-    // Send some bogus render data.
-    RenderVisualData visualData;
-    visualData.numSpectrumChannels = 2;
-    visualData.numWaveformChannels = 2;
-    for (int x=0; x<512; x++)
-    {
-      visualData.spectrumData[0][x] = x;
-      visualData.spectrumData[0][x] = x;
-    }
-    
-    VisualPluginRenderMessage renderMsg;
-    renderMsg.currentPositionInMS = 0;
-    renderMsg.timeStampID = 0;
-    renderMsg.renderData = &visualData;
-    
-    handlerProc(kVisualPluginRenderMessage, (struct VisualPluginMessageInfo* )&renderMsg, handlerData);
+        
+    [NSTimer scheduledTimerWithTimeInterval:0.1
+                                             target:self
+                                           selector:@selector(tick)
+                                           userInfo:NULL
+                                            repeats:YES];
   }
   
   NSLog(@"Done");
 } 
+
+- (void)tick
+{
+  RenderVisualData visualData;
+  visualData.numSpectrumChannels = 2;
+  visualData.numWaveformChannels = 2;
+  for (int x=0; x<512; x++)
+  {
+    visualData.spectrumData[0][x] = x;
+    visualData.spectrumData[1][x] = x;
+  }
+
+  VisualPluginRenderMessage renderMsg;
+  renderMsg.currentPositionInMS = 0;
+  renderMsg.timeStampID = 0;
+  renderMsg.renderData = &visualData;
+  
+  handlerProc(kVisualPluginRenderMessage, (struct VisualPluginMessageInfo* )&renderMsg, handlerData);
+  
+  // Update the time.
+  VisualPluginSetPositionMessage posMsg;
+  posMsg.positionTimeInMS = 100;
+  handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, handlerData);
+  
+  // Tell plug-in to update.
+  handlerProc(kVisualPluginUpdateMessage, 0, handlerData);
+}
 
 @end 
