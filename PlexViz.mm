@@ -3,9 +3,57 @@
  *  Copyright 2008 Blue Mandrill Design. All rights reserved.
  *
  */
+#include <algorithm>
+#include <map>
+#include <string>
+#include <vector>
+
 #include <AGL/agl.h>
 #include "iTunesAPI.h"
 #include "iTunesVisualAPI.h"
+ 
+struct Visualizer
+{
+  int numSpectrumChannels;
+  int numWaveformChannels;
+  int timeBetweenCalls;
+  int options;
+  VisualPluginProcPtr handlerProc;
+  void* handlerData;
+  CFBundleRef bundle;
+};
+
+using namespace std;
+
+class RuntimeStringCmp 
+{
+ public:
+    enum cmp_mode {normal, nocase};
+ private:
+    const cmp_mode mode;
+
+  static bool nocase_compare(char c1, char c2) { return toupper(c1) < toupper(c2); }
+
+ public:
+  RuntimeStringCmp (cmp_mode m=nocase) : mode(m) {}
+
+  bool operator() (const string& s1, const string& s2) const 
+  { 
+    if (mode == normal) 
+      return s1<s2; 
+    else
+      return lexicographical_compare (s1.begin(), s1.end(), s2.begin(), s2.end(), nocase_compare);
+  }
+};
+ 
+//
+// Globals.
+//
+map<void*, Visualizer* > vizMap;
+map<string, Visualizer*, RuntimeStringCmp> vizNameMap;
+string theModule;
+ 
+void ScanForVisualizers();
  
 struct VIS_INFO
 {
@@ -18,6 +66,9 @@ typedef struct VIS_INFO VIS_INFO;
  * Globals
  */
 CFBundleRef         bundle;
+Visualizer*         lastViz = 0;
+
+
 VisualPluginProcPtr handlerProc;
 void*               handlerData;
 void*               refCon;
@@ -25,13 +76,14 @@ NSDictionary*       iTunesPrefs;
 int                 options = 0;
 bool                hasSentDisplay = false;
 bool                isStopped = false;
+int                 numWaveformChannels = 0;
+int                 numSpectrumChannels = 0;
+long                sampleTime = 0;
+
 CGrafPtr            displayPort = 0;
 int                 x, y, w, h;
 int                 timeBetweenCalls = 0;
 char                strAlbumArtFile[1024];
-int                 numWaveformChannels = 0;
-int                 numSpectrumChannels = 0;
-long                sampleTime = 0;
 char                strArtist[1024], strAlbum[1024], strTrack[1024];
 int                 theTrackNumber, theDiscNumber, theYear, theDuration;
 long                timestampID = 0;
@@ -50,28 +102,51 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
     case kPlayerRegisterVisualPluginMessage:
     {
       PlayerRegisterVisualPluginMessage* msg = &messageInfo->u.registerVisualPluginMessage;
+      string vizName;
 
-      printf("kPlayerRegisterVisualPluginMessage\n");        
-      printf(" -> Name: %s\n", msg->name);
-      printf(" -> Options: 0x%08lx\n", msg->options);
-      printf(" -> Handler: 0x%08lx (refcon=0x%08lx)\n", msg->handler, msg->registerRefCon);
-      
-      if (msg->options & kVisualWantsIdleMessages)
-        printf(" -> Wants idle message.\n");
-      if (msg->options & kVisualWantsConfigure)
-        printf(" -> Wants configure.\n");
       if (msg->options & kVisualProvidesUnicodeName)
-        printf(" -> Provides unicode name.\n");
-      printf(" -> Requested %d spectrum channels.\n", msg->numSpectrumChannels);
-      printf(" -> Requested %d waveform channels.\n", msg->numWaveformChannels);
-      printf(" -> Time between data in ms: %d\n", msg->timeBetweenDataInMS);
+      {
+        char strName[1024];
+        CFStringRef string = CFStringCreateWithCharacters(kCFAllocatorDefault, msg->unicodeName, *msg->unicodeName+1);
+        CFStringGetCString(string, strName, sizeof(strName), kCFStringEncodingUTF8);
+        CFRelease(string);
+        
+        vizName = strName;
+        printf("Unicode name: [%s]\n", vizName.c_str());
+      }
+      else
+      {
+        vizName = (const char* )(msg->name+1);
+        printf("Name: [%s]\n", vizName.c_str());
+      }
+
+      //printf("kPlayerRegisterVisualPluginMessage\n");        
+      //printf(" -> Name: %s\n", msg->name+1);
+      //printf(" -> Options: 0x%08lx\n", msg->options);
+      //printf(" -> Handler: 0x%08lx (refcon=0x%08lx)\n", msg->handler, msg->registerRefCon);
       
-      numSpectrumChannels = msg->numSpectrumChannels;
-      numWaveformChannels = msg->numWaveformChannels;
-      timeBetweenCalls = msg->timeBetweenDataInMS;
-      options = msg->options;
-      handlerProc = msg->handler;
-      handlerData = msg->registerRefCon;
+      //if (msg->options & kVisualWantsIdleMessages)
+      //  printf(" -> Wants idle message.\n");
+      //if (msg->options & kVisualWantsConfigure)
+      //  printf(" -> Wants configure.\n");
+      //printf(" -> Requested %d spectrum channels.\n", msg->numSpectrumChannels);
+      //printf(" -> Requested %d waveform channels.\n", msg->numWaveformChannels);
+      //printf(" -> Time between data in ms: %d\n", msg->timeBetweenDataInMS);
+      
+      Visualizer* viz = new Visualizer();
+      viz->numSpectrumChannels = msg->numSpectrumChannels;
+      viz->numWaveformChannels = msg->numWaveformChannels;
+      viz->timeBetweenCalls = msg->timeBetweenDataInMS;
+      viz->options = msg->options;
+      viz->handlerProc = msg->handler;
+      viz->handlerData = msg->registerRefCon;
+      viz->bundle = bundle;
+      
+      // Save the last visualizer, and put it into the map.
+      lastViz = viz;
+      vizMap[msg->registerRefCon] = viz;
+      vizNameMap[vizName] = viz;
+      
       break;
     }
     
@@ -95,7 +170,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
     case kPlayerGetPluginNamedDataMessage:
     {
       PlayerGetPluginNamedDataMessage* msg = &messageInfo->u.getPluginNamedDataMessage;
-      printf("kPlayerGetPluginNamedDataMessage: %s\n", msg->dataName);
+      //printf("kPlayerGetPluginNamedDataMessage: %s\n", msg->dataName);
       break;
     }
     
@@ -109,12 +184,8 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       if (CFURLGetFSRef(cfUrl, &fileRef))
       {
         OSErr err = 0;
-      
-        printf("Get catalog information\n");
         if ((err=FSGetCatalogInfo(&fileRef, kFSCatInfoNone, NULL, NULL, msg->fileSpec, NULL)) != noErr)
           printf(" -> Error: %d\n", err);
-        else
-          printf(" -> Success\n");
       }
 
       break;
@@ -164,7 +235,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
     
     default:
     {
-      printf("****** Called me for message %.4s\n", &message);
+      printf("****** Unhandled message %.4s\n", &message);
       break;
     }
   }
@@ -175,22 +246,27 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
 void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, const char* szVisualisationName, float fPixelRatio)
 {
   // Save these.
+  theModule = szVisualisationName;
   displayPort = (CGrafPtr)graphicsPort;
   x = iPosX;
   y = iPosY;
   w = iWidth;
   h = iHeight;
   printf("Device is %p @ %d,%d %dx%d\n", graphicsPort, x, y, w, h);
-
+  
+  // Make sure we've loaded the visualizers.
+  ScanForVisualizers();
+  
+#if 0
   CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
   CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
   
-  int i = 8;
+  int i = 7;
   bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
   printf("---------------------------------------------\n");
   printf("Bundle: %08lx\n", bundle);
    
-  PluginProcPtr proc = CFBundleGetFunctionPointerForName(bundle, CFSTR("iTunesPluginMainMachO"));
+  PluginProcPtr proc = (PluginProcPtr)CFBundleGetFunctionPointerForName(bundle, CFSTR("iTunesPluginMainMachO"));
   printf("Plug-in proc: %08lx\n", proc);
   
   // Initialize.
@@ -235,12 +311,18 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
     printf(" -> Does not need resolution refresh switch\n");
   if (initMsg.options & kVisualDoesNotNeedErase)
     printf(" -> Does not need erase\n");
+#endif
     
+  Visualizer* viz = vizNameMap[szVisualisationName];
+  printf("Vis %s => %p\n", szVisualisationName, viz);
+          
+#if 0                                              
   // Enable the plugin.
   printf("Enabling the plugin...\n");
   VisualPluginMessageInfo enableMsg;
   handlerProc(kVisualPluginEnableMessage, &enableMsg, handlerData);
   printf("Enabled.\n");
+#endif
   
   //handlerProc(kVisualPluginConfigureMessage, 0, handlerData);
 }
@@ -449,13 +531,141 @@ void Plex_iTunes_SetTrackInfo(const char* artist, const char* album, const char*
   strcpy(strTrack, track);
 }
 
-void GetInfo(VIS_INFO* pInfo)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool Plex_iTunes_HandlesOwnDisplay()
+{
+  return true;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void InitializeBundle(CFBundleRef bundle)
+{
+  //printf("---------------------------------------------\n");
+  //printf("Bundle: %08lx\n", bundle);
+   
+  PluginProcPtr proc = (PluginProcPtr)CFBundleGetFunctionPointerForName(bundle, CFSTR("iTunesPluginMainMachO"));
+  //printf("Plug-in proc: %08lx\n", proc);
+  
+  // Initialize.
+  PluginInitMessage initMsg;
+  initMsg.majorVersion = kITPluginMajorMessageVersion;
+  initMsg.minorVersion = kITPluginMinorMessageVersion;
+  initMsg.appCookie = (void* )0xdeadbeef;
+  initMsg.appProc = ITAppProc;
+  initMsg.options = 0;
+  initMsg.refCon = 0;
+  
+  proc(kPluginInitMessage, (PluginMessageInfo* )&initMsg, (void* )0xbeef);
+  
+#if 0
+  printf("Refcon: %08lx\n", initMsg.refCon);
+  printf("Created visualizer: %p\n", lastViz);
+  
+  if (initMsg.options & kPluginWantsIdleMessages)
+    printf(" -> Wants idle message.\n");
+  if (initMsg.options & kPluginWantsToBeLeftOpen)
+    printf(" -> Wants to be left open.\n");
+  if (initMsg.options & kPluginWantsVolumeMessages)
+    printf(" -> Wants volume message.\n");
+  if (initMsg.options & kPluginWantsDisplayNotification)
+    printf(" -> Wants display notifications.\n");
+#endif
+      
+  // Send the kVisualPluginInitMessage message.
+  VisualPluginInitMessage initVizMsg;
+  initVizMsg.messageMajorVersion = kITPluginMajorMessageVersion;
+  initVizMsg.messageMinorVersion = kITPluginMinorMessageVersion;
+  initVizMsg.appVersion.majorRev = 7;
+  initVizMsg.appVersion.minorAndBugRev = 4;
+  initVizMsg.appVersion.nonRelRev = 0;
+  initVizMsg.appVersion.stage = 0x80;
+  initVizMsg.appCookie = (void* )0xdeadbeef;
+  initVizMsg.appProc = ITAppProc;
+  initVizMsg.options = 0;
+  initVizMsg.refCon = lastViz->handlerData;
+  lastViz->handlerProc(kVisualPluginInitMessage, (struct VisualPluginMessageInfo* )&initVizMsg, lastViz->handlerData);
+  //printf(" -> Visual plug-in initialization refcon=%p\n", initVizMsg.refCon);
+  lastViz->handlerData = initVizMsg.refCon;
+  
+  // Check our options.
+  //if (initMsg.options & kVisualDoesNotNeedResolutionSwitch)
+  //  printf(" -> Does not need resolution refresh switch\n");
+  //if (initMsg.options & kVisualDoesNotNeedErase)
+  //  printf(" -> Does not need erase\n");
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void ScanForVisualizers()
+{
+  // If we've already scanned, don't bother scanning again.
+  if (vizNameMap.size() > 0)
+    return;
+
+  // Look for plug-ins.
+  NSString *userPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/iTunes/iTunes Plug-ins"];
+  CFURLRef   bundleUrlUser = CFURLCreateWithFileSystemPath(
+                kCFAllocatorDefault,
+                (CFStringRef)userPath,
+                kCFURLPOSIXPathStyle,
+                true);
+
+  CFURLRef   bundleUrlSystem = CFURLCreateWithFileSystemPath(
+                kCFAllocatorDefault,
+                CFSTR("/Library/iTunes/iTunes Plug-ins"),
+                kCFURLPOSIXPathStyle,
+                true);
+
+  CFArrayRef bundleArrayUser = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlUser, NULL);
+  for (int i=0; i<CFArrayGetCount(bundleArrayUser); i++)
+  {
+    bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArrayUser, i);
+    InitializeBundle(bundle);
+  }
+
+  CFArrayRef bundleArraySystem = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlSystem, NULL);
+  for (int i=0; i<CFArrayGetCount(bundleArraySystem); i++)
+  {
+    bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArraySystem, i);
+    InitializeBundle(bundle);
+  }
+  
+  // Free.
+  [userPath release];
+  CFRelease(bundleUrlUser);
+  CFRelease(bundleArrayUser);
+  CFRelease(bundleArraySystem);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Plex_iTunes_GetVisualizers(char*** pVisualizers, int* count)
+{
+  *pVisualizers = 0;
+  *count = 0;
+  
+  // Make sure we've scanned for visualizers.
+  ScanForVisualizers();
+  
+  // Now iterate through and ask them all to register so that we know what visualizers they present.
+  char** ppPresets = (char**)malloc(sizeof(char* )*vizNameMap.size());
+  *count = vizNameMap.size();
+
+  map<string, Visualizer* >::iterator it;
+  int i = 0;
+  for (it = vizNameMap.begin(); it != vizNameMap.end(); ++it)
+    ppPresets[i++] = strdup(it->first.c_str());
+      
+  *pVisualizers = ppPresets;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Plex_iTunes_GetInfo(VIS_INFO* pInfo)
 {
   pInfo->bWantsFreq = true;
   pInfo->iSyncDelay = 0;
 }
 
-bool OnAction(long cmd, void *param)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool Plex_iTunes_OnAction(long cmd, void *param)
 {
   bool ret = false;
   
@@ -476,8 +686,10 @@ bool OnAction(long cmd, void *param)
   return ret;
 }
 
-void GetPresets(char ***pPresets, int *currentPreset, int *numPresets, bool *locked)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Plex_iTunes_GetPresets(char ***pPresets, int *currentPreset, int *numPresets, bool *locked)
 {
+  *pPresets = 0;
 }
 
 void GetSettings(void* setting)
@@ -502,19 +714,23 @@ struct Visualisation
     void (*UpdateSetting)(int num);
     void (*GetPresets)(char ***pPresets, int *currentPreset, int *numPresets, bool *locked);
     void (*SetTrackInfo)(const char* artist, const char* album, const char* track, int trackNumber, int discNumber, int year, int duration);
+    bool (*HandlesOwnDisplay)();
+    void (*GetVisualizers)(char*** pVisualizers, int* count);
 };
 
-void get_module(struct Visualisation* pVisz)
+extern "C" void get_module(struct Visualisation* pVisz)
 {
   pVisz->Create = Create;
   pVisz->Start = Start;
   pVisz->AudioData = Plex_iTunes_AudioData;
   pVisz->Render = Render;
   pVisz->Stop = Stop;
-  pVisz->GetInfo = GetInfo;
-  pVisz->OnAction = OnAction;
+  pVisz->GetInfo = Plex_iTunes_GetInfo;
+  pVisz->OnAction = Plex_iTunes_OnAction;
   pVisz->GetSettings = GetSettings;
   pVisz->UpdateSetting = UpdateSetting;
-  pVisz->GetPresets = GetPresets;
+  pVisz->GetPresets = Plex_iTunes_GetPresets;
   pVisz->SetTrackInfo = Plex_iTunes_SetTrackInfo;
+  pVisz->HandlesOwnDisplay = Plex_iTunes_HandlesOwnDisplay;
+  pVisz->GetVisualizers = Plex_iTunes_GetVisualizers;
 };

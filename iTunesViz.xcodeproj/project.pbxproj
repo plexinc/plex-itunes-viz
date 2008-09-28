@@ -16,7 +16,7 @@
 		E36678060E21517F000AA775 /* iTunesAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = E36678030E21517F000AA775 /* iTunesAPI.c */; };
 		E3DB33EB0E293D4C004F1DE5 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DB33EA0E293D4C004F1DE5 /* AGL.framework */; };
 		E3DB34200E293EED004F1DE5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DB341F0E293EED004F1DE5 /* OpenGL.framework */; };
-		E3DB34930E294A4B004F1DE5 /* PlexViz.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB34920E294A4B004F1DE5 /* PlexViz.m */; };
+		E3DB34930E294A4B004F1DE5 /* PlexViz.mm in Sources */ = {isa = PBXBuildFile; fileRef = E3DB34920E294A4B004F1DE5 /* PlexViz.mm */; };
 		E3DB34EC0E295496004F1DE5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		E3DB37140E2AFD56004F1DE5 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DB33EA0E293D4C004F1DE5 /* AGL.framework */; };
 /* End PBXBuildFile section */
@@ -42,7 +42,7 @@
 		E3DB341F0E293EED004F1DE5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E3DB347D0E294996004F1DE5 /* iTunesViz.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesViz.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3DB347E0E294996004F1DE5 /* iTunesViz-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTunesViz-Info.plist"; sourceTree = "<group>"; };
-		E3DB34920E294A4B004F1DE5 /* PlexViz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlexViz.m; sourceTree = "<group>"; };
+		E3DB34920E294A4B004F1DE5 /* PlexViz.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlexViz.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				E3DB347E0E294996004F1DE5 /* iTunesViz-Info.plist */,
-				E3DB34920E294A4B004F1DE5 /* PlexViz.m */,
+				E3DB34920E294A4B004F1DE5 /* PlexViz.mm */,
 			);
 			name = iTunesViz;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3DB34930E294A4B004F1DE5 /* PlexViz.m in Sources */,
+				E3DB34930E294A4B004F1DE5 /* PlexViz.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
