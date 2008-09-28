@@ -51,7 +51,9 @@ class RuntimeStringCmp
 //
 map<void*, Visualizer* > vizMap;
 map<string, Visualizer*, RuntimeStringCmp> vizNameMap;
+
 string theModule;
+Visualizer* theVisualizer = 0;
  
 void ScanForVisualizers();
  
@@ -69,8 +71,6 @@ CFBundleRef         bundle;
 Visualizer*         lastViz = 0;
 
 
-VisualPluginProcPtr handlerProc;
-void*               handlerData;
 void*               refCon;
 NSDictionary*       iTunesPrefs;
 int                 options = 0;
@@ -256,75 +256,17 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
   
   // Make sure we've loaded the visualizers.
   ScanForVisualizers();
-  
-#if 0
-  CFURLRef pluginsURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("/Users/elan/Library/iTunes/iTunes Plug-ins/"), kCFURLPOSIXPathStyle, true);
-  CFArrayRef bundleArray = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, pluginsURL, NULL);
-  
-  int i = 7;
-  bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArray, i);
-  printf("---------------------------------------------\n");
-  printf("Bundle: %08lx\n", bundle);
-   
-  PluginProcPtr proc = (PluginProcPtr)CFBundleGetFunctionPointerForName(bundle, CFSTR("iTunesPluginMainMachO"));
-  printf("Plug-in proc: %08lx\n", proc);
-  
-  // Initialize.
-  PluginInitMessage initMsg;
-  initMsg.majorVersion = kITPluginMajorMessageVersion;
-  initMsg.minorVersion = kITPluginMinorMessageVersion;
-  initMsg.appCookie = (void* )0xdeadbeef;
-  initMsg.appProc = ITAppProc;
-  initMsg.options = 0;
-  initMsg.refCon = 0;
-  
-  proc(kPluginInitMessage, (PluginMessageInfo* )&initMsg, (void* )0xbeef);
-  printf("Refcon: %08lx\n", initMsg.refCon);
-  
-  if (initMsg.options & kPluginWantsIdleMessages)
-    printf(" -> Wants idle message.\n");
-  if (initMsg.options & kPluginWantsToBeLeftOpen)
-    printf(" -> Wants to be left open.\n");
-  if (initMsg.options & kPluginWantsVolumeMessages)
-    printf(" -> Wants volume message.\n");
-  if (initMsg.options & kPluginWantsDisplayNotification)
-    printf(" -> Wants display notifications.\n");
       
-  // Send the kVisualPluginInitMessage message.
-  VisualPluginInitMessage initVizMsg;
-  initVizMsg.messageMajorVersion = kITPluginMajorMessageVersion;
-  initVizMsg.messageMinorVersion = kITPluginMinorMessageVersion;
-  initVizMsg.appVersion.majorRev = 7;
-  initVizMsg.appVersion.minorAndBugRev = 4;
-  initVizMsg.appVersion.nonRelRev = 0;
-  initVizMsg.appVersion.stage = 0x80;
-  initVizMsg.appCookie = (void* )0xdeadbeef;
-  initVizMsg.appProc = ITAppProc;
-  initVizMsg.options = 0;
-  initVizMsg.refCon = handlerData;
-  handlerProc(kVisualPluginInitMessage, (struct VisualPluginMessageInfo* )&initVizMsg, handlerData);
-  printf(" -> Visual plug-in initialization refcon=%p\n", initVizMsg.refCon);
-  handlerData = initVizMsg.refCon;
-  
-  // Check our options.
-  if (initMsg.options & kVisualDoesNotNeedResolutionSwitch)
-    printf(" -> Does not need resolution refresh switch\n");
-  if (initMsg.options & kVisualDoesNotNeedErase)
-    printf(" -> Does not need erase\n");
-#endif
-    
   Visualizer* viz = vizNameMap[szVisualisationName];
-  printf("Vis %s => %p\n", szVisualisationName, viz);
-          
-#if 0                                              
-  // Enable the plugin.
-  printf("Enabling the plugin...\n");
-  VisualPluginMessageInfo enableMsg;
-  handlerProc(kVisualPluginEnableMessage, &enableMsg, handlerData);
-  printf("Enabled.\n");
-#endif
-  
-  //handlerProc(kVisualPluginConfigureMessage, 0, handlerData);
+  if (viz)
+  {
+    // Enable the plugin.
+    theVisualizer = viz;
+    printf("Enabling the plugin...\n");
+    VisualPluginMessageInfo enableMsg;
+    theVisualizer->handlerProc(kVisualPluginEnableMessage, &enableMsg, theVisualizer->handlerData);
+    printf("Enabled.\n");
+  }
 }
 
 void Render()
@@ -336,11 +278,11 @@ void Render()
   {
     VisualPluginIdleMessage idleMsg;
     idleMsg.timeBetweenDataInMS = 20;
-    handlerProc(kVisualPluginIdleMessage, (struct VisualPluginMessageInfo* )&idleMsg, handlerData);
+    theVisualizer->handlerProc(kVisualPluginIdleMessage, (struct VisualPluginMessageInfo* )&idleMsg, theVisualizer->handlerData);
   }
   
   // Tell plugin to update.
-  handlerProc(kVisualPluginUpdateMessage, 0, handlerData);
+  theVisualizer->handlerProc(kVisualPluginUpdateMessage, 0, theVisualizer->handlerData);
 }
 
 void toPascal(char* str, Str255 strPascal)
@@ -438,7 +380,7 @@ void Display()
   streamInfoUnicode.version = 1;
 
   printf("Telling something is playing\n");
-  handlerProc(kVisualPluginPlayMessage, (struct VisualPluginMessageInfo* )&playMsg, handlerData);
+  theVisualizer->handlerProc(kVisualPluginPlayMessage, (struct VisualPluginMessageInfo* )&playMsg, theVisualizer->handlerData);
   
   if (hasSentDisplay == false)
   {
@@ -456,7 +398,7 @@ void Display()
     showMsg.port = displayPort;
     
     printf("Telling it to show window\n");
-    handlerProc(kVisualPluginShowWindowMessage, (struct VisualPluginMessageInfo* )&showMsg, handlerData);
+    theVisualizer->handlerProc(kVisualPluginShowWindowMessage, (struct VisualPluginMessageInfo* )&showMsg, theVisualizer->handlerData);
     hasSentDisplay = true;
   }
 }
@@ -464,8 +406,8 @@ void Display()
 void Stop()
 {
   printf("Stop\n");
-  handlerProc(kVisualPluginStopMessage, 0x0, handlerData);
-  handlerProc(kVisualPluginHideWindowMessage, 0x0, handlerData);
+  theVisualizer->handlerProc(kVisualPluginStopMessage, 0x0, theVisualizer->handlerData);
+  theVisualizer->handlerProc(kVisualPluginHideWindowMessage, 0x0, theVisualizer->handlerData);
   isStopped = true;
   hasSentDisplay = false;
 }
@@ -513,12 +455,12 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
   renderMsg.currentPositionInMS = sampleTime;
   renderMsg.timeStampID = timestampID++;
   renderMsg.renderData = &visualData;  
-  handlerProc(kVisualPluginRenderMessage, (struct VisualPluginMessageInfo* )&renderMsg, handlerData);
+  theVisualizer->handlerProc(kVisualPluginRenderMessage, (struct VisualPluginMessageInfo* )&renderMsg, theVisualizer->handlerData);
   
   // Update the time.
   VisualPluginSetPositionMessage posMsg;
   posMsg.positionTimeInMS = sampleTime;
-  handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, handlerData);
+  theVisualizer->handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, theVisualizer->handlerData);
   
   sampleTime += 60;
 }
