@@ -70,7 +70,6 @@ typedef struct VIS_INFO VIS_INFO;
 CFBundleRef         bundle;
 Visualizer*         lastViz = 0;
 
-
 void*               refCon;
 NSDictionary*       iTunesPrefs;
 int                 options = 0;
@@ -112,12 +111,10 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
         CFRelease(string);
         
         vizName = strName;
-        printf("Unicode name: [%s]\n", vizName.c_str());
       }
       else
       {
         vizName = (const char* )(msg->name+1);
-        printf("Name: [%s]\n", vizName.c_str());
       }
 
       //printf("kPlayerRegisterVisualPluginMessage\n");        
