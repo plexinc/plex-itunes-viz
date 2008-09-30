@@ -11,9 +11,12 @@
 #include <AGL/agl.h>
 #include "iTunesAPI.h"
 #include "iTunesVisualAPI.h"
- 
+
+using namespace std;
+
 struct Visualizer
 {
+  string name;
   int numSpectrumChannels;
   int numWaveformChannels;
   int timeBetweenCalls;
@@ -22,8 +25,6 @@ struct Visualizer
   void* handlerData;
   CFBundleRef bundle;
 };
-
-using namespace std;
 
 class RuntimeStringCmp 
 {
@@ -49,7 +50,6 @@ class RuntimeStringCmp
 //
 // Globals.
 //
-map<void*, Visualizer* > vizMap;
 map<string, Visualizer*, RuntimeStringCmp> vizNameMap;
 
 string theModule;
@@ -117,8 +117,8 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
         vizName = (const char* )(msg->name+1);
       }
 
-      //printf("kPlayerRegisterVisualPluginMessage\n");        
-      //printf(" -> Name: %s\n", msg->name+1);
+      printf("kPlayerRegisterVisualPluginMessage\n");        
+        printf(" -> Name: %s\n", vizName.c_str());
       //printf(" -> Options: 0x%08lx\n", msg->options);
       //printf(" -> Handler: 0x%08lx (refcon=0x%08lx)\n", msg->handler, msg->registerRefCon);
       
@@ -131,6 +131,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       //printf(" -> Time between data in ms: %d\n", msg->timeBetweenDataInMS);
       
       Visualizer* viz = new Visualizer();
+      viz->name = vizName;
       viz->numSpectrumChannels = msg->numSpectrumChannels;
       viz->numWaveformChannels = msg->numWaveformChannels;
       viz->timeBetweenCalls = msg->timeBetweenDataInMS;
@@ -141,7 +142,6 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       
       // Save the last visualizer, and put it into the map.
       lastViz = viz;
-      vizMap[msg->registerRefCon] = viz;
       vizNameMap[vizName] = viz;
       
       break;
@@ -259,7 +259,7 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
   {
     // Enable the plugin.
     theVisualizer = viz;
-    printf("Enabling the plugin...\n");
+    printf("Enabling %s...\n", viz->name.c_str());
     VisualPluginMessageInfo enableMsg;
     theVisualizer->handlerProc(kVisualPluginEnableMessage, &enableMsg, theVisualizer->handlerData);
     printf("Enabled.\n");
@@ -323,15 +323,15 @@ void Display()
   playMsg.audioFormat.mSampleRate = 44100.0;
       
   // Track info.
-  toPascal(strTrack, trackInfo.name);
-  toPascal(strAlbum, trackInfo.album);
-  toPascal(strArtist, trackInfo.artist);
+  toPascal("The Track", trackInfo.name);
+  toPascal("The Album", trackInfo.album);
+  toPascal("The Artist", trackInfo.artist);
   toPascal("Genre", trackInfo.genre);
   toPascal("filename.mp3", trackInfo.fileName);
   toPascal("MPEG Audio File", trackInfo.kind);
-  trackInfo.trackNumber = theTrackNumber;
+  trackInfo.trackNumber = 1;
   trackInfo.numTracks = 10;
-  trackInfo.year = theYear;
+  trackInfo.year = 2007;
   trackInfo.soundVolumeAdjustment = 0;
   toPascal("Flat", trackInfo.eqPresetName);
   toPascal("Comments", trackInfo.comments);
@@ -358,17 +358,14 @@ void Display()
   trackInfoUnicode.attributes = 0;
   trackInfoUnicode.validAttributes = 0;
 
-  CFStringRef uniArtist = CFStringCreateWithCString(nil, strArtist, kCFStringEncodingUTF8);
-  CFStringGetCharacters(uniArtist, CFRangeMake(0, CFStringGetLength(uniArtist)), trackInfoUnicode.artist+1);
-  trackInfoUnicode.artist[0] = CFStringGetLength(uniArtist);
+  CFStringRef strAlbum = CFSTR("Album");
+  CFStringGetCharacters(strAlbum, CFRangeMake(0, CFStringGetLength(strAlbum)), trackInfoUnicode.album);
 
-  CFStringRef uniAlbum = CFStringCreateWithCString(nil, strAlbum, kCFStringEncodingUTF8);
-  CFStringGetCharacters(uniAlbum, CFRangeMake(0, CFStringGetLength(uniAlbum)), trackInfoUnicode.album+1);
-  trackInfoUnicode.album[0] = CFStringGetLength(uniAlbum);
+  CFStringRef strArtist = CFSTR("Artist");
+  CFStringGetCharacters(strArtist, CFRangeMake(0, CFStringGetLength(strArtist)), trackInfoUnicode.artist);
 
-  CFStringRef uniTrack = CFStringCreateWithCString(nil, strTrack, kCFStringEncodingUTF8);
-  CFStringGetCharacters(uniTrack, CFRangeMake(0, CFStringGetLength(uniTrack)), trackInfoUnicode.name+1);
-  trackInfoUnicode.name[0] = CFStringGetLength(uniTrack);
+  CFStringRef strTrack = CFSTR("Track");
+  CFStringGetCharacters(strTrack, CFRangeMake(0, CFStringGetLength(strTrack)), trackInfoUnicode.name);
   
   // Unicode stream.
   streamInfoUnicode.streamMessage[0] = 0;
@@ -376,7 +373,7 @@ void Display()
   streamInfoUnicode.streamURL[0] = 0;
   streamInfoUnicode.version = 1;
 
-  printf("Telling something is playing\n");
+  printf("Telling something is playing (handler: %p, data: %p)\n", theVisualizer->handlerProc, theVisualizer->handlerData);
   theVisualizer->handlerProc(kVisualPluginPlayMessage, (struct VisualPluginMessageInfo* )&playMsg, theVisualizer->handlerData);
   
   if (hasSentDisplay == false)
@@ -384,12 +381,12 @@ void Display()
     // Show the window.
     VisualPluginShowWindowMessage showMsg;
     showMsg.drawRect.left = x;
-    showMsg.drawRect.top = y;
+    showMsg.drawRect.top = y+21;
     showMsg.drawRect.right = w;
     showMsg.drawRect.bottom = h;
     showMsg.options = 0;
     showMsg.totalVisualizerRect.left = x;
-    showMsg.totalVisualizerRect.top = y;
+    showMsg.totalVisualizerRect.top = y+21;
     showMsg.totalVisualizerRect.right = w;
     showMsg.totalVisualizerRect.bottom = h;
     showMsg.port = displayPort;
@@ -480,7 +477,7 @@ bool Plex_iTunes_HandlesOwnDisplay()
 void InitializeBundle(CFBundleRef bundle)
 {
   //printf("---------------------------------------------\n");
-  //printf("Bundle: %08lx\n", bundle);
+  printf("Bundle: %08lx\n", bundle);
    
   PluginProcPtr proc = (PluginProcPtr)CFBundleGetFunctionPointerForName(bundle, CFSTR("iTunesPluginMainMachO"));
   //printf("Plug-in proc: %08lx\n", proc);
@@ -514,8 +511,8 @@ void InitializeBundle(CFBundleRef bundle)
   VisualPluginInitMessage initVizMsg;
   initVizMsg.messageMajorVersion = kITPluginMajorMessageVersion;
   initVizMsg.messageMinorVersion = kITPluginMinorMessageVersion;
-  initVizMsg.appVersion.majorRev = 7;
-  initVizMsg.appVersion.minorAndBugRev = 4;
+  initVizMsg.appVersion.majorRev = 8;
+  initVizMsg.appVersion.minorAndBugRev = 0;
   initVizMsg.appVersion.nonRelRev = 0;
   initVizMsg.appVersion.stage = 0x80;
   initVizMsg.appCookie = (void* )0xdeadbeef;
@@ -523,7 +520,7 @@ void InitializeBundle(CFBundleRef bundle)
   initVizMsg.options = 0;
   initVizMsg.refCon = lastViz->handlerData;
   lastViz->handlerProc(kVisualPluginInitMessage, (struct VisualPluginMessageInfo* )&initVizMsg, lastViz->handlerData);
-  //printf(" -> Visual plug-in initialization refcon=%p\n", initVizMsg.refCon);
+  printf(" -> Visual plug-in initialization [%s] refcon=%p\n", lastViz->name.c_str(), initVizMsg.refCon);
   lastViz->handlerData = initVizMsg.refCon;
   
   // Check our options.
