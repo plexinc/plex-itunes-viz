@@ -318,9 +318,9 @@ void Display()
   playMsg.audioFormat.mSampleRate = 44100.0;
       
   // Track info.
-  toPascal("The Track", trackInfo.name);
-  toPascal("The Album", trackInfo.album);
-  toPascal("The Artist", trackInfo.artist);
+  toPascal(strTrack, trackInfo.name);
+  toPascal(strAlbum, trackInfo.album);
+  toPascal(strArtist, trackInfo.artist);
   toPascal("Genre", trackInfo.genre);
   toPascal("filename.mp3", trackInfo.fileName);
   toPascal("MPEG Audio File", trackInfo.kind);
@@ -353,14 +353,20 @@ void Display()
   trackInfoUnicode.attributes = 0;
   trackInfoUnicode.validAttributes = 0;
 
-  CFStringRef strAlbum = CFSTR("Album");
-  CFStringGetCharacters(strAlbum, CFRangeMake(0, CFStringGetLength(strAlbum)), trackInfoUnicode.album);
+  CFStringRef strAlbumRef = CFStringCreateWithCString(0, strAlbum, kCFStringEncodingUTF8);
+  CFStringGetCharacters(strAlbumRef, CFRangeMake(0, CFStringGetLength(strAlbumRef)), trackInfoUnicode.album+1);
+  trackInfoUnicode.album[0] = CFStringGetLength(strAlbumRef);
+  CFRelease(strAlbumRef);
 
-  CFStringRef strArtist = CFSTR("Artist");
-  CFStringGetCharacters(strArtist, CFRangeMake(0, CFStringGetLength(strArtist)), trackInfoUnicode.artist);
+  CFStringRef strArtistRef = CFStringCreateWithCString(0, strArtist, kCFStringEncodingUTF8);
+  CFStringGetCharacters(strArtistRef, CFRangeMake(0, CFStringGetLength(strArtistRef)), trackInfoUnicode.artist+1);
+  trackInfoUnicode.artist[0] = CFStringGetLength(strArtistRef);
+  CFRelease(strArtistRef);
 
-  CFStringRef strTrack = CFSTR("Track");
-  CFStringGetCharacters(strTrack, CFRangeMake(0, CFStringGetLength(strTrack)), trackInfoUnicode.name);
+  CFStringRef strTrackRef = CFStringCreateWithCString(0, strTrack, kCFStringEncodingUTF8);
+  CFStringGetCharacters(strTrackRef, CFRangeMake(0, CFStringGetLength(strTrackRef)), trackInfoUnicode.name+1);
+  trackInfoUnicode.name[0] = CFStringGetLength(strTrackRef);
+  CFRelease(strTrackRef);
   
   // Unicode stream.
   streamInfoUnicode.streamMessage[0] = 0;
