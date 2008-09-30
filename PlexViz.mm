@@ -104,7 +104,6 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
         CFStringRef string = CFStringCreateWithCharacters(kCFAllocatorDefault, msg->unicodeName, *msg->unicodeName+1);
         CFStringGetCString(string, strName, sizeof(strName), kCFStringEncodingUTF8);
         CFRelease(string);
-        
         vizName = strName;
       }
       else
@@ -113,9 +112,9 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       }
 
       printf("kPlayerRegisterVisualPluginMessage\n");        
-        printf(" -> Name: %s\n", vizName.c_str());
+      printf(" -> Name: %s\n", vizName.c_str());
       //printf(" -> Options: 0x%08lx\n", msg->options);
-      //printf(" -> Handler: 0x%08lx (refcon=0x%08lx)\n", msg->handler, msg->registerRefCon);
+      printf(" -> Handler: 0x%08lx (refcon=0x%08lx)\n", msg->handler, msg->registerRefCon);
       
       //if (msg->options & kVisualWantsIdleMessages)
       //  printf(" -> Wants idle message.\n");
@@ -138,6 +137,24 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       // Save the last visualizer, and put it into the map.
       lastViz = viz;
       vizNameMap[vizName] = viz;
+      
+      // Send the kVisualPluginInitMessage message.
+      printf("Sending kVisualPluginInitMessage\n");
+      VisualPluginInitMessage initVizMsg;
+      initVizMsg.messageMajorVersion = kITPluginMajorMessageVersion;
+      initVizMsg.messageMinorVersion = kITPluginMinorMessageVersion;
+      initVizMsg.appVersion.majorRev = 8;
+      initVizMsg.appVersion.minorAndBugRev = 0;
+      initVizMsg.appVersion.nonRelRev = 0;
+      initVizMsg.appVersion.stage = 0x80;
+      initVizMsg.appCookie = (void* )0xdeadbeef;
+      initVizMsg.appProc = ITAppProc;
+      initVizMsg.options = 0;
+      initVizMsg.refCon = lastViz->handlerData;
+      printf("Initializing plugins...\n");
+      lastViz->handlerProc(kVisualPluginInitMessage, (struct VisualPluginMessageInfo* )&initVizMsg, lastViz->handlerData);
+      printf(" -> Visual plug-in initialization [%s] refcon=%p\n", lastViz->name.c_str(), initVizMsg.refCon);
+      lastViz->handlerData = initVizMsg.refCon;
       
       break;
     }
@@ -492,6 +509,8 @@ void InitializeBundle(CFBundleRef bundle)
   initMsg.options = 0;
   initMsg.refCon = 0;
   
+  // Initialize the plug-in.
+  printf("Sending kPluginInitMessage\n");
   proc(kPluginInitMessage, (PluginMessageInfo* )&initMsg, (void* )0xbeef);
   
 #if 0
@@ -507,23 +526,7 @@ void InitializeBundle(CFBundleRef bundle)
   if (initMsg.options & kPluginWantsDisplayNotification)
     printf(" -> Wants display notifications.\n");
 #endif
-      
-  // Send the kVisualPluginInitMessage message.
-  VisualPluginInitMessage initVizMsg;
-  initVizMsg.messageMajorVersion = kITPluginMajorMessageVersion;
-  initVizMsg.messageMinorVersion = kITPluginMinorMessageVersion;
-  initVizMsg.appVersion.majorRev = 8;
-  initVizMsg.appVersion.minorAndBugRev = 0;
-  initVizMsg.appVersion.nonRelRev = 0;
-  initVizMsg.appVersion.stage = 0x80;
-  initVizMsg.appCookie = (void* )0xdeadbeef;
-  initVizMsg.appProc = ITAppProc;
-  initVizMsg.options = 0;
-  initVizMsg.refCon = lastViz->handlerData;
-  lastViz->handlerProc(kVisualPluginInitMessage, (struct VisualPluginMessageInfo* )&initVizMsg, lastViz->handlerData);
-  printf(" -> Visual plug-in initialization [%s] refcon=%p\n", lastViz->name.c_str(), initVizMsg.refCon);
-  lastViz->handlerData = initVizMsg.refCon;
-  
+        
   // Check our options.
   //if (initMsg.options & kVisualDoesNotNeedResolutionSwitch)
   //  printf(" -> Does not need resolution refresh switch\n");
@@ -555,8 +558,8 @@ void ScanForVisualizers()
   CFArrayRef bundleArrayUser = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlUser, NULL);
   for (int i=0; i<CFArrayGetCount(bundleArrayUser); i++)
   {
-    bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArrayUser, i);
-    InitializeBundle(bundle);
+    //bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArrayUser, i);
+    //InitializeBundle(bundle);
   }
 
   CFArrayRef bundleArraySystem = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlSystem, NULL);
