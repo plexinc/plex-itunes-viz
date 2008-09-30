@@ -72,16 +72,11 @@ Visualizer*         lastViz = 0;
 
 void*               refCon;
 NSDictionary*       iTunesPrefs;
-int                 options = 0;
 bool                hasSentDisplay = false;
 bool                isStopped = false;
-int                 numWaveformChannels = 0;
-int                 numSpectrumChannels = 0;
 long                sampleTime = 0;
-
 CGrafPtr            displayPort = 0;
 int                 x, y, w, h;
-int                 timeBetweenCalls = 0;
 char                strAlbumArtFile[1024];
 char                strArtist[1024], strAlbum[1024], strTrack[1024];
 int                 theTrackNumber, theDiscNumber, theYear, theDuration;
@@ -271,7 +266,7 @@ void Render()
   if (isStopped == true)
     return;
 
-  if (options & kVisualWantsIdleMessages)
+  if (theVisualizer->options & kVisualWantsIdleMessages)
   {
     VisualPluginIdleMessage idleMsg;
     idleMsg.timeBetweenDataInMS = 20;
@@ -416,8 +411,8 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
 
   RenderVisualData visualData;
   memset(&visualData, 0, sizeof(visualData));
-  visualData.numSpectrumChannels = numSpectrumChannels;
-  visualData.numWaveformChannels = numWaveformChannels;
+  visualData.numSpectrumChannels = theVisualizer->numSpectrumChannels;
+  visualData.numWaveformChannels = theVisualizer->numWaveformChannels;
  
   int index = 0;
   for (int x=0; x<iAudioDataLength*2; x+=2)
