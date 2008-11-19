@@ -557,17 +557,19 @@ void ScanForVisualizers()
                 true);
 
   CFArrayRef bundleArrayUser = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlUser, NULL);
-  for (int i=0; i<CFArrayGetCount(bundleArrayUser); i++)
+  for (int i=0; bundleArrayUser != nil && i<CFArrayGetCount(bundleArrayUser); i++)
   {
     bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArrayUser, i);
-    InitializeBundle(bundle);
+    if (bundle)
+      InitializeBundle(bundle);
   }
 
   CFArrayRef bundleArraySystem = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlSystem, NULL);
-  for (int i=0; i<CFArrayGetCount(bundleArraySystem); i++)
+  for (int i=0; bundleArraySystem != nil && i<CFArrayGetCount(bundleArraySystem); i++)
   {
     bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArraySystem, i);
-    InitializeBundle(bundle);
+    if (bundle)
+      InitializeBundle(bundle);
   }
   
   // Free.
