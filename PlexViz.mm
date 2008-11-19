@@ -101,20 +101,24 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       if (msg->options & kVisualProvidesUnicodeName)
       {
         char strName[1024];
-        CFStringRef string = CFStringCreateWithCharacters(kCFAllocatorDefault, msg->unicodeName, *msg->unicodeName+1);
+        CFStringRef string = CFStringCreateWithCharacters(kCFAllocatorDefault, msg->unicodeName+1, *msg->unicodeName);
         CFStringGetCString(string, strName, sizeof(strName), kCFStringEncodingUTF8);
         CFRelease(string);
         vizName = strName;
+        //printf("Visualizer name is [%s]\n", vizName.c_str());
       }
       else
       {
+        // Make sure we limit the name to the right size.
         vizName = (const char* )(msg->name+1);
+        vizName = vizName.substr(0, *msg->name);
+        //printf("Visualizer NAME is [%s]\n", vizName.c_str());
       }
 
-      printf("kPlayerRegisterVisualPluginMessage\n");        
-      printf(" -> Name: %s\n", vizName.c_str());
+      //printf("kPlayerRegisterVisualPluginMessage\n");        
+      //printf(" -> Name: %s\n", vizName.c_str());
       //printf(" -> Options: 0x%08lx\n", msg->options);
-      printf(" -> Handler: 0x%08lx (refcon=0x%08lx)\n", msg->handler, msg->registerRefCon);
+      //printf(" -> Handler: 0x%08lx (refcon=0x%08lx)\n", msg->handler, msg->registerRefCon);
       
       //if (msg->options & kVisualWantsIdleMessages)
       //  printf(" -> Wants idle message.\n");
@@ -139,7 +143,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       vizNameMap[vizName] = viz;
       
       // Send the kVisualPluginInitMessage message.
-      printf("Sending kVisualPluginInitMessage\n");
+      //printf("Sending kVisualPluginInitMessage\n");
       VisualPluginInitMessage initVizMsg;
       initVizMsg.messageMajorVersion = kITPluginMajorMessageVersion;
       initVizMsg.messageMinorVersion = kITPluginMinorMessageVersion;
@@ -151,9 +155,9 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       initVizMsg.appProc = ITAppProc;
       initVizMsg.options = 0;
       initVizMsg.refCon = lastViz->handlerData;
-      printf("Initializing plugins...\n");
+      //printf("Initializing plugins...\n");
       lastViz->handlerProc(kVisualPluginInitMessage, (struct VisualPluginMessageInfo* )&initVizMsg, lastViz->handlerData);
-      printf(" -> Visual plug-in initialization [%s] refcon=%p\n", lastViz->name.c_str(), initVizMsg.refCon);
+      //printf(" -> Visual plug-in initialization [%s] refcon=%p\n", lastViz->name.c_str(), initVizMsg.refCon);
       lastViz->handlerData = initVizMsg.refCon;
       
       break;
@@ -185,7 +189,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
     
     case kPlayerGetPluginFileSpecMessage:
     {
-      printf("kPlayerGetPluginFileSpecMessage\n");
+      //printf("kPlayerGetPluginFileSpecMessage\n");
       PlayerGetPluginFileSpecMessage* msg = &messageInfo->u.getPluginFileSpecMessage;
     
       CFURLRef cfUrl = CFBundleCopyBundleURL(bundle);
@@ -271,10 +275,8 @@ void Create(void* graphicsPort, int iPosX, int iPosY, int iWidth, int iHeight, c
   {
     // Enable the plugin.
     theVisualizer = viz;
-    printf("Enabling %s...\n", viz->name.c_str());
     VisualPluginMessageInfo enableMsg;
     theVisualizer->handlerProc(kVisualPluginEnableMessage, &enableMsg, theVisualizer->handlerData);
-    printf("Enabled.\n");
   }
 }
 
@@ -399,12 +401,12 @@ void Display()
     // Show the window.
     VisualPluginShowWindowMessage showMsg;
     showMsg.drawRect.left = x;
-    showMsg.drawRect.top = y+21;
+    showMsg.drawRect.top = y;
     showMsg.drawRect.right = w;
     showMsg.drawRect.bottom = h;
     showMsg.options = 0;
     showMsg.totalVisualizerRect.left = x;
-    showMsg.totalVisualizerRect.top = y+21;
+    showMsg.totalVisualizerRect.top = y;
     showMsg.totalVisualizerRect.right = w;
     showMsg.totalVisualizerRect.bottom = h;
     showMsg.port = displayPort;
@@ -495,7 +497,7 @@ bool Plex_iTunes_HandlesOwnDisplay()
 void InitializeBundle(CFBundleRef bundle)
 {
   //printf("---------------------------------------------\n");
-  printf("Bundle: %08lx\n", bundle);
+  //printf("Bundle: %08lx\n", bundle);
    
   PluginProcPtr proc = (PluginProcPtr)CFBundleGetFunctionPointerForName(bundle, CFSTR("iTunesPluginMainMachO"));
   //printf("Plug-in proc: %08lx\n", proc);
@@ -510,7 +512,6 @@ void InitializeBundle(CFBundleRef bundle)
   initMsg.refCon = 0;
   
   // Initialize the plug-in.
-  printf("Sending kPluginInitMessage\n");
   proc(kPluginInitMessage, (PluginMessageInfo* )&initMsg, (void* )0xbeef);
   
 #if 0
@@ -558,8 +559,8 @@ void ScanForVisualizers()
   CFArrayRef bundleArrayUser = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlUser, NULL);
   for (int i=0; i<CFArrayGetCount(bundleArrayUser); i++)
   {
-    //bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArrayUser, i);
-    //InitializeBundle(bundle);
+    bundle = (CFBundleRef)CFArrayGetValueAtIndex(bundleArrayUser, i);
+    InitializeBundle(bundle);
   }
 
   CFArrayRef bundleArraySystem = CFBundleCreateBundlesFromDirectory(kCFAllocatorDefault, bundleUrlSystem, NULL);
