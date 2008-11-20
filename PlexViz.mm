@@ -402,8 +402,8 @@ void Display()
     VisualPluginShowWindowMessage showMsg;
     showMsg.drawRect.left = x;
     showMsg.drawRect.top = y;
-    showMsg.drawRect.right = w;
-    showMsg.drawRect.bottom = h;
+    showMsg.drawRect.right = w+x;
+    showMsg.drawRect.bottom = h+y;
     showMsg.options = 0;
     showMsg.totalVisualizerRect.left = x;
     showMsg.totalVisualizerRect.top = y;
