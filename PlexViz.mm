@@ -175,14 +175,14 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
     case kPlayerGetPluginITFileSpecMessage:
     {
       PlayerGetPluginITFileSpecMessage* msg = &messageInfo->u.getPluginITFileSpecMessage;
-      CFURLRef cfUrl = CFBundleCopyExecutableURL(bundle);
+      CFURLRef cfUrl = CFBundleCopyExecutableURL(theVisualizer ? theVisualizer->bundle : bundle);
       CFURLGetFSRef(cfUrl, msg->fileSpec);
       break;
     }
    
     case kPlayerGetPluginNamedDataMessage:
     {
-      PlayerGetPluginNamedDataMessage* msg = &messageInfo->u.getPluginNamedDataMessage;
+      //PlayerGetPluginNamedDataMessage* msg = &messageInfo->u.getPluginNamedDataMessage;
       //printf("kPlayerGetPluginNamedDataMessage: %s\n", msg->dataName);
       break;
     }
@@ -192,7 +192,7 @@ OSStatus ITAppProc(void *appCookie, OSType message, struct PlayerMessageInfo *me
       //printf("kPlayerGetPluginFileSpecMessage\n");
       PlayerGetPluginFileSpecMessage* msg = &messageInfo->u.getPluginFileSpecMessage;
     
-      CFURLRef cfUrl = CFBundleCopyBundleURL(bundle);
+      CFURLRef cfUrl = CFBundleCopyBundleURL(theVisualizer ? theVisualizer->bundle : bundle);
       FSRef fileRef;
       if (CFURLGetFSRef(cfUrl, &fileRef))
       {
