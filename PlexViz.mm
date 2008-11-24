@@ -311,8 +311,10 @@ void Start(int iChannels, int iSamplesPerSec, int iBitsPerSample, const char* sz
 
 void Display()
 {
-  // Tell it a track is playing.
+  // Tell it a track is playing and a change occured.
   VisualPluginPlayMessage playMsg;
+  VisualPluginChangeTrackMessage changeMsg;
+  
   ITTrackInfoV1 trackInfo;
   ITStreamInfoV1 streamInfo;
   ITTrackInfo trackInfoUnicode;
@@ -327,6 +329,11 @@ void Display()
   playMsg.streamInfo = &streamInfo;
   playMsg.trackInfoUnicode = &trackInfoUnicode;
   playMsg.streamInfoUnicode = &streamInfoUnicode;
+  
+  changeMsg.trackInfo = &trackInfo;
+  changeMsg.streamInfo = &streamInfo;
+  changeMsg.trackInfoUnicode = &trackInfoUnicode;
+  changeMsg.streamInfoUnicode = &streamInfoUnicode;
   
   playMsg.audioFormat.mBitsPerChannel = 16;
   playMsg.audioFormat.mBytesPerFrame = 32;
@@ -392,9 +399,6 @@ void Display()
   streamInfoUnicode.streamTitle[0] = 0;
   streamInfoUnicode.streamURL[0] = 0;
   streamInfoUnicode.version = 1;
-
-  printf("Telling something is playing (handler: %p, data: %p)\n", theVisualizer->handlerProc, theVisualizer->handlerData);
-  theVisualizer->handlerProc(kVisualPluginPlayMessage, (struct VisualPluginMessageInfo* )&playMsg, theVisualizer->handlerData);
   
   if (hasSentDisplay == false)
   {
@@ -414,7 +418,18 @@ void Display()
     printf("Telling it to show window\n");
     theVisualizer->handlerProc(kVisualPluginShowWindowMessage, (struct VisualPluginMessageInfo* )&showMsg, theVisualizer->handlerData);
     hasSentDisplay = true;
+    
+    // Let it render the first time.
+    Render();
   }
+
+  printf("Telling something is playing (handler: %p, data: %p)\n", theVisualizer->handlerProc, theVisualizer->handlerData);
+  theVisualizer->handlerProc(kVisualPluginStopMessage, 0x0, theVisualizer->handlerData);
+  theVisualizer->handlerProc(kVisualPluginPlayMessage, (struct VisualPluginMessageInfo* )&playMsg, theVisualizer->handlerData);
+  Render();
+    
+  // Notify of the change of track.
+  //theVisualizer->handlerProc(kVisualPluginChangeTrackMessage, (struct VisualPluginMessageInfo* )&changeMsg, theVisualizer->handlerData);
 }
 
 void Stop()
