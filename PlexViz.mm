@@ -515,6 +515,9 @@ void InitializeBundle(CFBundleRef bundle)
   //printf("Bundle: %08lx\n", bundle);
    
   PluginProcPtr proc = (PluginProcPtr)CFBundleGetFunctionPointerForName(bundle, CFSTR("iTunesPluginMainMachO"));
+  if (proc == 0)
+    return;
+
   //printf("Plug-in proc: %08lx\n", proc);
   
   // Initialize.
