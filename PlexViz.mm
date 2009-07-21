@@ -285,15 +285,15 @@ void Render()
   if (isStopped == true)
     return;
 
+  // Tell plugin to update.
+  theVisualizer->handlerProc(kVisualPluginUpdateMessage, 0, theVisualizer->handlerData);
+
   if (theVisualizer->options & kVisualWantsIdleMessages)
   {
     VisualPluginIdleMessage idleMsg;
     idleMsg.timeBetweenDataInMS = 20;
     theVisualizer->handlerProc(kVisualPluginIdleMessage, (struct VisualPluginMessageInfo* )&idleMsg, theVisualizer->handlerData);
   }
-  
-  // Tell plugin to update.
-  theVisualizer->handlerProc(kVisualPluginUpdateMessage, 0, theVisualizer->handlerData);
 }
 
 void toPascal(char* str, Str255 strPascal)
@@ -348,7 +348,7 @@ void Display()
   toPascal(strAlbum, trackInfo.album);
   toPascal(strArtist, trackInfo.artist);
   toPascal("Genre", trackInfo.genre);
-  toPascal("filename.mp3", trackInfo.fileName);
+  toPascal(strTrack, trackInfo.fileName);
   toPascal("MPEG Audio File", trackInfo.kind);
   trackInfo.trackNumber = 1;
   trackInfo.numTracks = 10;
@@ -356,15 +356,15 @@ void Display()
   trackInfo.soundVolumeAdjustment = 0;
   toPascal("Flat", trackInfo.eqPresetName);
   toPascal("Comments", trackInfo.comments);
-  trackInfo.totalTimeInMS = 20000;
+  trackInfo.totalTimeInMS = theDuration;
   trackInfo.startTimeInMS = 0;
-  trackInfo.stopTimeInMS = 20000;
+  trackInfo.stopTimeInMS = 0;
   trackInfo.sizeInBytes = 3040444;
   trackInfo.bitRate = 225;
   trackInfo.sampleRateFixed = 44100;
   trackInfo.fileType = 'FLAC';
   
-  trackInfo.validFields = kITTINameFieldMask | kITTIArtistFieldMask | kITTIAlbumFieldMask;
+  trackInfo.validFields = kITTINameFieldMask | kITTIArtistFieldMask | kITTIAlbumFieldMask | kITTITotalTimeFieldMask;
   trackInfo.attributes = 0;
   trackInfo.validAttributes = 0;
   
@@ -375,8 +375,9 @@ void Display()
   streamInfo.version = 1;
     
   // Unicode track.
-  trackInfoUnicode.validFields = kITTIArtistFieldMask | kITTIAlbumFieldMask | kITTINameFieldMask;
+  trackInfoUnicode.validFields = kITTIArtistFieldMask | kITTIAlbumFieldMask | kITTINameFieldMask | kITTITotalTimeFieldMask;
   trackInfoUnicode.attributes = 0;
+  trackInfoUnicode.totalTimeInMS = theDuration;
   trackInfoUnicode.validAttributes = 0;
 
   CFStringRef strAlbumRef = CFStringCreateWithCString(0, strAlbum, kCFStringEncodingUTF8);
@@ -426,10 +427,9 @@ void Display()
   printf("Telling something is playing (handler: %p, data: %p)\n", theVisualizer->handlerProc, theVisualizer->handlerData);
   theVisualizer->handlerProc(kVisualPluginStopMessage, 0x0, theVisualizer->handlerData);
   theVisualizer->handlerProc(kVisualPluginPlayMessage, (struct VisualPluginMessageInfo* )&playMsg, theVisualizer->handlerData);
-  Render();
+  theVisualizer->handlerProc(kVisualPluginChangeTrackMessage, (struct VisualPluginMessageInfo* )&changeMsg, theVisualizer->handlerData);
     
-  // Notify of the change of track.
-  //theVisualizer->handlerProc(kVisualPluginChangeTrackMessage, (struct VisualPluginMessageInfo* )&changeMsg, theVisualizer->handlerData);
+  Render();
 }
 
 void Stop()
@@ -491,7 +491,8 @@ void Plex_iTunes_AudioData(short* pAudioData, int iAudioDataLength, float *pFreq
   posMsg.positionTimeInMS = sampleTime;
   theVisualizer->handlerProc(kVisualPluginSetPositionMessage, (struct VisualPluginMessageInfo* )&posMsg, theVisualizer->handlerData);
   
-  sampleTime += 60;
+  // FIXME, hardwired hack.
+  sampleTime += 16.66666667;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -500,6 +501,7 @@ void Plex_iTunes_SetTrackInfo(const char* artist, const char* album, const char*
   strcpy(strArtist, artist);
   strcpy(strAlbum, album);
   strcpy(strTrack, track);
+  theDuration = duration * 1000;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
