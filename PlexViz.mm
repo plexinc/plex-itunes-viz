@@ -427,9 +427,9 @@ void Display()
   printf("Telling something is playing (handler: %p, data: %p)\n", theVisualizer->handlerProc, theVisualizer->handlerData);
   theVisualizer->handlerProc(kVisualPluginStopMessage, 0x0, theVisualizer->handlerData);
   theVisualizer->handlerProc(kVisualPluginPlayMessage, (struct VisualPluginMessageInfo* )&playMsg, theVisualizer->handlerData);
-  theVisualizer->handlerProc(kVisualPluginChangeTrackMessage, (struct VisualPluginMessageInfo* )&changeMsg, theVisualizer->handlerData);
-    
+
   Render();
+  theVisualizer->handlerProc(kVisualPluginChangeTrackMessage, (struct VisualPluginMessageInfo* )&changeMsg, theVisualizer->handlerData);    
 }
 
 void Stop()
